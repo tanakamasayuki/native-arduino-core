@@ -13,9 +13,11 @@ compiler.cxx.flags=-std=gnu++11 -O2 -Wall
 compiler.ldflags=
 
 # Compile C source to object
-recipe.c.o.pattern={compiler.path}{compiler.c.cmd} {compiler.c.flags} -c -o {build.path}/{object_file} {source_file}
-# Compile C++ source to object
-recipe.cpp.o.pattern={compiler.path}{compiler.cpp.cmd} {compiler.cxx.flags} -c -o {build.path}/{object_file} {source_file}
+## Compile C source to object
+## Add include paths for the core and the sketch so Arduino CLI can find Arduino.h
+recipe.c.o.pattern={compiler.path}{compiler.c.cmd} {compiler.c.flags} -I{runtime.platform.path}/cores/{build.core} -I{build.path}/sketch -c -o {build.path}/{object_file} {source_file}
+## Compile C++ source to object
+recipe.cpp.o.pattern={compiler.path}{compiler.cpp.cmd} {compiler.cxx.flags} -I{runtime.platform.path}/cores/{build.core} -I{build.path}/sketch -c -o {build.path}/{object_file} {source_file}
 # Link objects into a native executable
 recipe.c.link.pattern={compiler.path}{compiler.cpp.cmd} {compiler.ldflags} {object_files} -o {build.path}/{build.project_name}.out
 

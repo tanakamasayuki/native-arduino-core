@@ -1,5 +1,5 @@
 # Build artifacts
-/build/
+build/
 /package/
 *.o
 *.out
@@ -28,3 +28,6 @@ Thumbs.db
 
 # Node
 node_modules/
+
+# User
+memo.txt
