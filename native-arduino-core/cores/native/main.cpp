@@ -1,8 +1,11 @@
 #include "Arduino.h"
 
+// Provide a weak default main so user sketches can override main() if desired.
+// The linker will prefer a user-defined strong main over this weak symbol.
+int main(int argc, char **argv) __attribute__((weak));
 int main(int argc, char **argv)
 {
-    // Arduino スタイルの呼び出し
+    // Arduino-style entrypoint: call setup() once, then loop() forever.
     setup();
     for (;;)
     {

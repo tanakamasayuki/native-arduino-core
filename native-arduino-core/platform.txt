@@ -22,10 +22,10 @@ compiler.cxx.flags=-std=gnu++11 -O2 -Wall -ffunction-sections -fdata-sections
 compiler.ldflags=-Wl,--gc-sections
 
 # Compile C source to object (add include paths for core and sketch)
-recipe.c.o.pattern={compiler.path}{compiler.c.cmd} {compiler.c.flags} -I{runtime.platform.path}/cores/{build.core} -I{build.path}/sketch -c -o {object_file} {source_file}
+recipe.c.o.pattern={compiler.path}{compiler.c.cmd} {compiler.c.flags} {build.extra_flags} -I{runtime.platform.path}/cores/{build.core} -I{build.path}/sketch -c -o {object_file} {source_file}
 
 # Compile C++ source to object
-recipe.cpp.o.pattern={compiler.path}{compiler.cpp.cmd} {compiler.cxx.flags} -I{runtime.platform.path}/cores/{build.core} -I{build.path}/sketch -c -o {object_file} {source_file}
+recipe.cpp.o.pattern={compiler.path}{compiler.cpp.cmd} {compiler.cxx.flags} {build.extra_flags} -I{runtime.platform.path}/cores/{build.core} -I{build.path}/sketch -c -o {object_file} {source_file}
 
 # Create static archive from objects
 # Ensure archive exists at both {build.path}/{archive_file} and {build.path}/core/<basename>
@@ -39,12 +39,12 @@ recipe.ar.pattern={compiler.path}{compiler.ar.cmd} {compiler.ar.flags} {compiler
 # We wrap the link in sh -c so we can run the produced .out immediately after linking.
 # Link (C) and then run the produced binary.
 # We wrap the link in sh -c so we can run the produced .out immediately after linking.
-recipe.c.link.pattern={compiler.path}{compiler.cpp.cmd} {compiler.ldflags} {archive_file_path} {object_files} -o {build.path}/{build.project_name}.out
+recipe.c.link.pattern={compiler.path}{compiler.cpp.cmd} {compiler.ldflags} {archive_file_path} {object_files} {build.extra_flags} -o {build.path}/{build.project_name}.out
 # Ensure both C and C++ link recipes exist. Some CLI versions call the C++ link recipe
 # when linking C++ sketches, so provide an identical cpp variant.
 
 # Link (C++) and then run the produced binary.
-recipe.cpp.link.pattern={compiler.path}{compiler.cpp.cmd} {compiler.ldflags} {archive_file_path} {object_files} -o {build.path}/{build.project_name}.out
+recipe.cpp.link.pattern={compiler.path}{compiler.cpp.cmd} {compiler.ldflags} {archive_file_path} {object_files} {build.extra_flags} -o {build.path}/{build.project_name}.out
 
 # ELF/linker (combine) settings
 # Some Arduino CLI/toolchains call a "combine" recipe to merge objects and archives
@@ -55,8 +55,8 @@ compiler.c.elf.flags={compiler.cxx.flags}
 
 # Combine (link) pattern: combine all object files and the core archive into the final executable.
 # Using start-group/end-group helps resolve circular deps between archives and objects.
-recipe.c.combine.pattern={compiler.path}{compiler.c.elf.cmd} {compiler.c.elf.flags} {compiler.ldflags} -Wl,--start-group {object_files} {archive_file_path} -Wl,--end-group -o {build.path}/{build.project_name}.out
-recipe.cpp.combine.pattern={compiler.path}{compiler.c.elf.cmd} {compiler.c.elf.flags} {compiler.ldflags} -Wl,--start-group {object_files} {archive_file_path} -Wl,--end-group -o {build.path}/{build.project_name}.out
+recipe.c.combine.pattern={compiler.path}{compiler.c.elf.cmd} {compiler.c.elf.flags} {compiler.ldflags} -Wl,--start-group {object_files} {archive_file_path} -Wl,--end-group {build.extra_flags} -o {build.path}/{build.project_name}.out
+recipe.cpp.combine.pattern={compiler.path}{compiler.c.elf.cmd} {compiler.c.elf.flags} {compiler.ldflags} -Wl,--start-group {object_files} {archive_file_path} -Wl,--end-group {build.extra_flags} -o {build.path}/{build.project_name}.out
 
 # Upload recipe: execute the produced binary locally
 tools.run.upload.pattern="{build.path}/{build.project_name}.out"
