@@ -2,3 +2,5 @@
 native.name=Native (Generic)
 native.build.core=native
 native.menu.example=BlankSketch
+native.upload.tool.run=run
+native.upload.tool.default=run
