@@ -12,7 +12,11 @@ on:
 
 jobs:
   build-and-release:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -43,6 +47,7 @@ jobs:
           release_name: v${{ steps.ver.outputs.version }}
           draft: false
           prerelease: false
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload core zip
         uses: actions/upload-release-asset@v1
