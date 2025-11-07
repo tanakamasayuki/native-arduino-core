@@ -11,3 +11,6 @@ extern void loop();
 typedef uint8_t byte;
 
 #endif // ARDUINO_MINIMAL_H
+
+// Include compatibility wrappers (Serial, millis, digital I/O, etc.)
+#include "ArduinoCompat.h"
