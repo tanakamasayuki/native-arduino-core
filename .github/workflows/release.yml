@@ -36,23 +36,23 @@ jobs:
             echo "version=$VER" >> $GITHUB_OUTPUT
           fi
 
-        - name: Ensure tag exists (create if triggered manually)
-          if: ${{ github.event_name == 'workflow_dispatch' }}
-          run: |
-            set -e
-            VER=${{ steps.ver.outputs.version }}
-            TAG=v$VER
-            # Check if remote tag already exists
-            if git ls-remote --tags origin refs/tags/$TAG | grep -q $TAG; then
-              echo "Tag $TAG already exists on remote."
-            else
-              echo "Creating and pushing tag $TAG"
-              git config user.email "actions@github.com"
-              git config user.name "github-actions"
-              git tag -a $TAG -m "Release $TAG"
-              # Use token auth to push tag
-              git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} $TAG
-            fi
+      - name: Ensure tag exists (create if triggered manually)
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        run: |
+          set -e
+          VER=${{ steps.ver.outputs.version }}
+          TAG=v$VER
+          # Check if remote tag already exists
+          if git ls-remote --tags origin refs/tags/$TAG | grep -q $TAG; then
+            echo "Tag $TAG already exists on remote."
+          else
+            echo "Creating and pushing tag $TAG"
+            git config user.email "actions@github.com"
+            git config user.name "github-actions"
+            git tag -a $TAG -m "Release $TAG"
+            # Use token auth to push tag
+            git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} $TAG
+          fi
 
       - name: Build package and update index
         run: |
