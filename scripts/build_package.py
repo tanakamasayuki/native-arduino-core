@@ -1,190 +1,128 @@
 #!/usr/bin/env python3
+"""Build a Boards Manager package zip and update package_index.json.
+
+This script packages the `cores/` and optionally a top-level `variants/`
+directory if it exists in the repository root. It will NOT create a
+placeholder `variants/` directory — that was the recent change request.
+
+It also writes a minimal `package_index.json` describing the generated ZIP
+and copies it into `package/package_index.json`.
 """
-build_package.py
 
-Create a release ZIP with the layout:
-
-native-arduino-core/
-  cores/
-    native/
-  variants/
-    generic/
-
-Compute SHA-256 checksum for the ZIP and update package_index.json in the repo root
-while preserving older entries.
-
-Usage:
-  python3 scripts/build_package.py --version 0.1.4 --repo owner/repo
-
-The script writes: native-arduino-core-<version>.zip and updates package_index.json
-in the repository root.
-"""
 import argparse
 import hashlib
 import json
-import os
 import shutil
-import subprocess
-import sys
 from pathlib import Path
+import sys
 
 
-def sha256_file(path: Path) -> str:
+def sha256_file(p: Path):
     h = hashlib.sha256()
-    with path.open("rb") as f:
-        for chunk in iter(lambda: f.read(8192), b""):
+    with p.open('rb') as f:
+        for chunk in iter(lambda: f.read(8192), b''):
             h.update(chunk)
     return h.hexdigest()
 
 
-def repo_base_url_from_repo(repo: str) -> str:
-    # repo is owner/repo
-    return f"https://github.com/{repo}"
-
-
-def copy_tree_contents(src: Path, dst: Path):
-    dst.mkdir(parents=True, exist_ok=True)
-    for item in src.iterdir():
-        if item.is_dir():
-            shutil.copytree(item, dst / item.name, dirs_exist_ok=True)
-        else:
-            shutil.copy2(item, dst / item.name)
-
-
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--version", required=True, help="Version string, e.g. 0.1.4")
-    parser.add_argument("--repo", required=False, help="GitHub owner/repo (e.g. owner/repo). If provided, used to build download URLs")
-    parser.add_argument("--output-zip", required=False, help="Output zip filename (optional)")
-    parser.add_argument("--package-index", default="package_index.json", help="Path to package_index.json to update")
-    args = parser.parse_args()
+    p = argparse.ArgumentParser()
+    p.add_argument('--version', required=True)
+    p.add_argument('--repo', required=True, help='owner/repo')
+    p.add_argument('--package-index', default='package_index.json')
+    args = p.parse_args()
 
-    root = Path.cwd()
+    root = Path(__file__).resolve().parents[1]
+    pkg_name = 'native-arduino-core'
     ver = args.version
-    top_name = "native-arduino-core"
-    top_dir = Path("package") / top_name
+    owner_repo = args.repo
+    owner = owner_repo.split('/')[0]
 
-    # Clean package dir
-    if Path("package").exists():
-        shutil.rmtree("package")
-    top_dir.mkdir(parents=True, exist_ok=True)
+    package_dir = root / 'package'
+    if package_dir.exists():
+        shutil.rmtree(package_dir)
+    package_dir.mkdir(parents=True)
+
+    work = package_dir / pkg_name
+    work.mkdir()
 
     # Copy cores
-    cores_src = root / "cores"
-    cores_dst = top_dir / "cores"
-    if cores_src.exists() and cores_src.is_dir():
-        copy_tree_contents(cores_src, cores_dst)
-        print(f"Copied cores from {cores_src} to {cores_dst}")
-    else:
-        print("Warning: cores/ directory not found in repo; creating empty cores/native placeholder")
-        (cores_dst / "native").mkdir(parents=True, exist_ok=True)
+    cores_src = root / 'cores'
+    if not cores_src.exists():
+        print('Error: cores/ not found in repo root', file=sys.stderr)
+        sys.exit(2)
+    shutil.copytree(cores_src, work / 'cores')
 
-    # Copy variants/generic or create placeholder
-    variants_src = root / "variants" / "generic"
-    variants_dst = top_dir / "variants" / "generic"
-    if variants_src.exists() and variants_src.is_dir():
-        copy_tree_contents(variants_src, variants_dst)
-        print(f"Copied variants/generic from {variants_src} to {variants_dst}")
-    else:
-        variants_dst.mkdir(parents=True, exist_ok=True)
-        (variants_dst / "README.txt").write_text("generic variant placeholder")
-        print("Created placeholder variants/generic/README.txt")
-
-    # Optionally put platform.txt and boards.txt into appropriate places
-    # Many Arduino packages include platform.txt under the top-level folder or in cores;
-    # we will copy platform.txt and boards.txt from repo root if present into top_dir
-    for fname in ("platform.txt", "boards.txt"):
-        src = root / fname
+    # Copy boards/platform files
+    for fn in ('platform.txt', 'boards.txt'):
+        src = root / fn
         if src.exists():
-            shutil.copy2(src, top_dir / fname)
-            print(f"Copied {fname} to package/{top_name}/{fname}")
+            shutil.copy2(src, work / fn)
+
+    # Only include variants if present at repo root
+    variants_src = root / 'variants'
+    if variants_src.exists() and variants_src.is_dir():
+        shutil.copytree(variants_src, work / 'variants')
 
     # Create zip
-    zip_name = args.output_zip or f"{top_name}-{ver}.zip"
-    zip_path = root / zip_name
-    # Use shutil.make_archive to produce the zip in package directory, then move
-    # but make_archive wants a base_name without extension. We'll create directly
-    # from package dir using subprocess zip for consistent behavior.
-    cwd = Path("package")
-    print(f"Creating zip {zip_path} from {top_dir}...")
-    try:
-        subprocess.check_call(["zip", "-r", str(zip_path), top_name], cwd=str(cwd))
-    except FileNotFoundError:
-        # 'zip' tool not available, fallback to shutil.make_archive
-        print("zip tool not found; falling back to shutil.make_archive")
-        base = root / f"{top_name}-{ver}"
-        archive_path = shutil.make_archive(str(base), 'zip', root_dir='package', base_dir=top_name)
-        zip_path = Path(archive_path)
-    except subprocess.CalledProcessError as e:
-        print(f"zip command failed: {e}; attempting fallback to shutil.make_archive")
-        base = root / f"{top_name}-{ver}"
-        archive_path = shutil.make_archive(str(base), 'zip', root_dir='package', base_dir=top_name)
-        zip_path = Path(archive_path)
+    zip_name = f"{pkg_name}-{ver}.zip"
+    zip_path = package_dir / zip_name
+    # shutil.make_archive expects base_name without .zip
+    shutil.make_archive(str(zip_path.with_suffix('')), 'zip', root_dir=package_dir, base_dir=pkg_name)
 
-    # Compute checksum
-    checksum = sha256_file(zip_path)
-    print(f"SHA-256: {checksum}")
+    sha = sha256_file(zip_path)
+    size = zip_path.stat().st_size
 
-    # Update package_index.json
-    pindex_path = root / args.package_index
-    if pindex_path.exists():
-        with pindex_path.open("r", encoding="utf-8") as f:
-            try:
-                data = json.load(f)
-            except Exception:
-                print("Warning: existing package_index.json is invalid JSON; starting fresh")
-                data = {"packages": []}
-    else:
-        data = {"packages": []}
-
-    # Ensure package entry exists
-    pkg_name = "lang-ship"
-    pkg = None
-    for p in data.get("packages", []):
-        if p.get("name") == pkg_name:
-            pkg = p
-            break
-    if pkg is None:
-        pkg = {"name": pkg_name, "maintainer": "tanakamasayuki", "platforms": []}
-        data.setdefault("packages", []).append(pkg)
-
-    # Build platform entry
-    if args.repo:
-        base = repo_base_url_from_repo(args.repo)
-        url = f"{base}/releases/download/v{ver}/{zip_name}"
-    else:
-        url = f"REPLACE_WITH_RELEASE_URL/{zip_name}"
-
-    platform_entry = {
-        "name": "Native Arduino Core",
-        "architecture": "native",
-        "version": ver,
-        "url": url,
-        "archiveFileName": zip_name,
-        "checksum": f"SHA-256:{checksum}"
+    # Build minimal package_index.json structure
+    package_url = f"https://{owner}.github.io/{pkg_name}/{zip_name}"
+    pkg_entry = {
+        'packages': [
+            {
+                'name': 'lang-ship',
+                'maintainer': owner,
+                'websiteURL': f'https://github.com/{owner_repo}',
+                'platforms': [
+                    {
+                        'name': 'Native Arduino Core',
+                        'architecture': 'native',
+                        'version': ver,
+                        'category': 'Contributed',
+                        'size': size,
+                        'archiveFileName': zip_name,
+                        'url': package_url,
+                        'checksum': {
+                            'type': 'sha256',
+                            'value': sha
+                        }
+                    }
+                ]
+            }
+        ]
     }
 
-    # Replace or append
-    platforms = pkg.setdefault("platforms", [])
-    replaced = False
-    for i, pl in enumerate(platforms):
-        if pl.get("version") == ver:
-            platforms[i] = platform_entry
-            replaced = True
-            break
-    if not replaced:
-        platforms.append(platform_entry)
+    # Update root package_index.json by attempting to merge platforms if file exists
+    pkg_index_path = root / args.package_index
+    if pkg_index_path.exists():
+        try:
+            existing = json.loads(pkg_index_path.read_text(encoding='utf-8'))
+        except Exception:
+            existing = None
+        if isinstance(existing, dict) and 'packages' in existing:
+            merged = existing
+            names = [p.get('name') for p in merged.get('packages', [])]
+            if 'lang-ship' in names:
+                merged['packages'] = [p for p in merged['packages'] if p.get('name') != 'lang-ship']
+            merged['packages'].append(pkg_entry['packages'][0])
+            pkg_entry = merged
 
-    # Write updated package_index.json (write to root and to package dir)
-    with pindex_path.open("w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
-    # Also write package/package_index.json for convenience
-    with (root / "package" / "package_index.json").open("w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
+    # Write package_index.json to root and to package/ for gh-pages
+    pkg_index_path.write_text(json.dumps(pkg_entry, indent=2, ensure_ascii=False), encoding='utf-8')
+    (package_dir / 'package_index.json').write_text(json.dumps(pkg_entry, indent=2, ensure_ascii=False), encoding='utf-8')
 
-    print(f"Wrote package_index.json with {len(platforms)} platform(s) for package '{pkg_name}'")
-    print("Done.")
+    print(f"Created {zip_path} ({size} bytes)")
+    print(f"SHA-256: {sha}")
+    print(f"Wrote package_index.json with platform version {ver}")
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
