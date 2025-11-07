@@ -31,6 +31,10 @@ recipe.ar.pattern={compiler.path}{compiler.ar.cmd} rcs {build.path}/{archive_fil
 # Use the core archive and all object files so the linker produces the final .out
 recipe.c.link.pattern={compiler.path}{compiler.cpp.cmd} {compiler.ldflags} {build.path}/{archive_file} {object_files} -o {build.path}/{build.project_name}.out
 
+# Ensure both C and C++ link recipes exist. Some CLI versions call the C++ link recipe
+# when linking C++ sketches, so provide an identical cpp variant.
+recipe.cpp.link.pattern={compiler.path}{compiler.cpp.cmd} {compiler.ldflags} {build.path}/{archive_file} {object_files} -o {build.path}/{build.project_name}.out
+
 # Upload recipe: execute the produced binary locally
 recipe.upload.pattern=sh -c "{build.path}/{build.project_name}.out"
 
