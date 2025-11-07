@@ -15,25 +15,9 @@ compiler.ldflags=
 # Compile C source to object
 ## Compile C source to object
 ## Add include paths for the core and the sketch so Arduino CLI can find Arduino.h
-recipe.c.o.pattern=sh -lc '
-OUT="{build.path}/{object_file}"
-if [ -z "{object_file}" ] || [ -d "$OUT" ] || [ "${OUT: -1}" = "/" ]; then
-	mkdir -p "{build.path}/tmp"
-	OUT="{build.path}/tmp/$(basename "{source_file}").o"
-fi
-mkdir -p "$(dirname "$OUT")"
-{compiler.path}{compiler.c.cmd} {compiler.c.flags} -I{runtime.platform.path}/cores/{build.core} -I{build.path}/sketch -c -o "$OUT" "{source_file}"
-'
+recipe.c.o.pattern=sh -lc 'OUT="{build.path}/{object_file}"; if [ -z "{object_file}" ] || [ -d "$OUT" ] || [ "${OUT: -1}" = "/" ]; then mkdir -p "{build.path}/tmp"; OUT="{build.path}/tmp/$(basename "{source_file}").o"; fi; mkdir -p "$(dirname "$OUT")"; {compiler.path}{compiler.c.cmd} {compiler.c.flags} -I{runtime.platform.path}/cores/{build.core} -I{build.path}/sketch -c -o "$OUT" "{source_file}"'
 ## Compile C++ source to object
-recipe.cpp.o.pattern=sh -lc '
-OUT="{build.path}/{object_file}"
-if [ -z "{object_file}" ] || [ -d "$OUT" ] || [ "${OUT: -1}" = "/" ]; then
-	mkdir -p "{build.path}/tmp"
-	OUT="{build.path}/tmp/$(basename "{source_file}").o"
-fi
-mkdir -p "$(dirname "$OUT")"
-{compiler.path}{compiler.cpp.cmd} {compiler.cxx.flags} -I{runtime.platform.path}/cores/{build.core} -I{build.path}/sketch -c -o "$OUT" "{source_file}"
-'
+recipe.cpp.o.pattern=sh -lc 'OUT="{build.path}/{object_file}"; if [ -z "{object_file}" ] || [ -d "$OUT" ] || [ "${OUT: -1}" = "/" ]; then mkdir -p "{build.path}/tmp"; OUT="{build.path}/tmp/$(basename "{source_file}").o"; fi; mkdir -p "$(dirname "$OUT")"; {compiler.path}{compiler.cpp.cmd} {compiler.cxx.flags} -I{runtime.platform.path}/cores/{build.core} -I{build.path}/sketch -c -o "$OUT" "{source_file}"'
 # Link objects into a native executable
 recipe.c.link.pattern={compiler.path}{compiler.cpp.cmd} {compiler.ldflags} {object_files} -o {build.path}/{build.project_name}.out
 
