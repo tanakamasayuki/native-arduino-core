@@ -59,6 +59,23 @@ jobs:
           VER=${{ steps.ver.outputs.version }}
           python3 scripts/build_package.py --version "$VER" --repo "${{ github.repository }}"
 
+      - name: Commit package_index.json back to repository
+        run: |
+          set -e
+          git config user.email "actions@github.com"
+          git config user.name "github-actions"
+          # Ensure we update the default branch (main). Adjust if your default branch is different.
+          git fetch origin main:refs/remotes/origin/main || true
+          git checkout main || git checkout -b main
+          git pull --ff-only origin main || true
+          git add package_index.json || true
+          if git diff --staged --quiet; then
+            echo "No changes to package_index.json"
+          else
+            git commit -m "Update package_index.json for v${{ steps.ver.outputs.version }}"
+            git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
+          fi
+
       - name: Publish package to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
