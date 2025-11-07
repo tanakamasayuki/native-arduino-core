@@ -60,7 +60,7 @@ recipe.cpp.combine.pattern={compiler.path}{compiler.c.elf.cmd} {compiler.c.elf.f
 
 # Upload recipe: execute the produced binary locally
 tools.run.upload.pattern="{build.path}/{build.project_name}.out"
-tools.run.upload.pattern.windows=start cmd /k "{build.path}/{build.project_name}.out"
+tools.run.upload.pattern.windows="cmd" /c start "" cmd /k "{build.path}/{build.project_name}.out"
 
 # Size command
 recipe.size.pattern={compiler.path}{compiler.size.cmd} {build.path}/{build.project_name}.out
