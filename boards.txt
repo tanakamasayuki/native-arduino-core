@@ -1,4 +1,5 @@
 ## Board: lang-ship:native:generic
 native.name=Native (Generic)
 native.build.core=native
+native.upload.tool=sh
 native.menu.example=BlankSketch
