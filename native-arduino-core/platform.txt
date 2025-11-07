@@ -50,7 +50,7 @@ recipe.c.combine.pattern={compiler.path}{compiler.c.elf.cmd} {compiler.c.elf.fla
 recipe.cpp.combine.pattern={compiler.path}{compiler.c.elf.cmd} {compiler.c.elf.flags} {compiler.ldflags} -Wl,--start-group {object_files} {build.path}/{archive_file} -Wl,--end-group -o {build.path}/{build.project_name}.out
 
 # Upload recipe: execute the produced binary locally
-recipe.upload.pattern=sh -c "{build.path}/{build.project_name}.out"
+recipe.upload.pattern=sh -c "chmod +x \"{build.path}/{build.project_name}.out\" 2>/dev/null || true; \"{build.path}/{build.project_name}.out\""
 
 # Size command
 recipe.size.pattern={compiler.path}{compiler.size.cmd} {build.path}/{build.project_name}.out
