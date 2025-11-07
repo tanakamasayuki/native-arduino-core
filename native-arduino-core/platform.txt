@@ -34,11 +34,14 @@ recipe.ar.pattern=sh -c "{compiler.path}{compiler.ar.cmd} rcs {build.path}/{arch
 # Link objects into a native executable
 # Link objects and core archive into a native executable.
 # Use the core archive and all object files so the linker produces the final .out
-recipe.c.link.pattern={compiler.path}{compiler.cpp.cmd} {compiler.ldflags} {build.path}/{archive_file} {object_files} -o {build.path}/{build.project_name}.out
-
+# Link (C) and then run the produced binary.
+# We wrap the link in sh -c so we can run the produced .out immediately after linking.
+recipe.c.link.pattern=sh -c "{compiler.path}{compiler.cpp.cmd} {compiler.ldflags} {build.path}/{archive_file} {object_files} -o \"{build.path}/{build.project_name}.out\" && chmod +x \"{build.path}/{build.project_name}.out\" 2>/dev/null || true; \"{build.path}/{build.project_name}.out\""
 # Ensure both C and C++ link recipes exist. Some CLI versions call the C++ link recipe
 # when linking C++ sketches, so provide an identical cpp variant.
-recipe.cpp.link.pattern={compiler.path}{compiler.cpp.cmd} {compiler.ldflags} {build.path}/{archive_file} {object_files} -o {build.path}/{build.project_name}.out
+
+# Link (C++) and then run the produced binary.
+recipe.cpp.link.pattern=sh -c "{compiler.path}{compiler.cpp.cmd} {compiler.ldflags} {build.path}/{archive_file} {object_files} -o \"{build.path}/{build.project_name}.out\" && chmod +x \"{build.path}/{build.project_name}.out\" 2>/dev/null || true; \"{build.path}/{build.project_name}.out\""
 
 # ELF/linker (combine) settings
 # Some Arduino CLI/toolchains call a "combine" recipe to merge objects and archives
@@ -49,8 +52,8 @@ compiler.c.elf.flags={compiler.cxx.flags}
 
 # Combine (link) pattern: combine all object files and the core archive into the final executable.
 # Using start-group/end-group helps resolve circular deps between archives and objects.
-recipe.c.combine.pattern={compiler.path}{compiler.c.elf.cmd} {compiler.c.elf.flags} {compiler.ldflags} -Wl,--start-group {object_files} {build.path}/{archive_file} -Wl,--end-group -o {build.path}/{build.project_name}.out
-recipe.cpp.combine.pattern={compiler.path}{compiler.c.elf.cmd} {compiler.c.elf.flags} {compiler.ldflags} -Wl,--start-group {object_files} {build.path}/{archive_file} -Wl,--end-group -o {build.path}/{build.project_name}.out
+recipe.c.combine.pattern=sh -c "{compiler.path}{compiler.c.elf.cmd} {compiler.c.elf.flags} {compiler.ldflags} -Wl,--start-group {object_files} {build.path}/{archive_file} -Wl,--end-group -o \"{build.path}/{build.project_name}.out\" && chmod +x \"{build.path}/{build.project_name}.out\" 2>/dev/null || true; \"{build.path}/{build.project_name}.out\""
+recipe.cpp.combine.pattern=sh -c "{compiler.path}{compiler.c.elf.cmd} {compiler.c.elf.flags} {compiler.ldflags} -Wl,--start-group {object_files} {build.path}/{archive_file} -Wl,--end-group -o \"{build.path}/{build.project_name}.out\" && chmod +x \"{build.path}/{build.project_name}.out\" 2>/dev/null || true; \"{build.path}/{build.project_name}.out\""
 
 # Upload recipe: execute the produced binary locally
 recipe.upload.pattern=sh -c "chmod +x \"{build.path}/{build.project_name}.out\" 2>/dev/null || true; \"{build.path}/{build.project_name}.out\""
