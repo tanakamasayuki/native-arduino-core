@@ -1,13 +1,13 @@
 menu.sdl2=SDL2
 
 ## Board: lang-ship:native:generic
-native.name=Native (Generic)
-native.build.core=native
-native.menu.sdl2=disabled
-native.menu.sdl2.disabled=Disabled
-native.menu.sdl2.enabled=Enabled
-native.menu.sdl2.disabled.build.extra_flags=
-native.menu.sdl2.enabled.build.extra_flags=-DNATIVE_USE_SDL2 -lSDL2
-native.upload.tool.run=run
-native.upload.tool.default=run
-native.upload.protocol=run
+generic.name=Native (Generic)
+generic.build.core=native
+generic.menu.sdl2=disabled
+generic.menu.sdl2.disabled=Disabled
+generic.menu.sdl2.enabled=Enabled
+generic.menu.sdl2.disabled.build.extra_flags=
+generic.menu.sdl2.enabled.build.extra_flags=-DNATIVE_USE_SDL2 -lSDL2
+generic.upload.tool.run=run
+generic.upload.tool.default=run
+generic.upload.protocol=run
