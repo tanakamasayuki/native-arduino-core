@@ -22,10 +22,10 @@ compiler.cxx.flags=-std=gnu++11 -O2 -Wall -ffunction-sections -fdata-sections
 compiler.ldflags=-Wl,--gc-sections
 
 # Compile C source to object (add include paths for core and sketch)
-recipe.c.o.pattern={compiler.path}{compiler.c.cmd} {compiler.c.flags} {build.extra_flags} -I{runtime.platform.path}/cores/{build.core} -I{build.path}/sketch -c -o {object_file} {source_file}
+recipe.c.o.pattern={compiler.path}{compiler.c.cmd} {compiler.c.flags} {build.extra_flags} {includes} -I{runtime.platform.path}/cores/{build.core} -I{build.path}/sketch -c -o {object_file} {source_file}
 
 # Compile C++ source to object
-recipe.cpp.o.pattern={compiler.path}{compiler.cpp.cmd} {compiler.cxx.flags} {build.extra_flags} -I{runtime.platform.path}/cores/{build.core} -I{build.path}/sketch -c -o {object_file} {source_file}
+recipe.cpp.o.pattern={compiler.path}{compiler.cpp.cmd} {compiler.cxx.flags} {build.extra_flags} {includes} -I{runtime.platform.path}/cores/{build.core} -I{build.path}/sketch -c -o {object_file} {source_file}
 
 # Create static archive from objects
 # Ensure archive exists at both {build.path}/{archive_file} and {build.path}/core/<basename>
