@@ -15,9 +15,9 @@ compiler.ldflags=
 # Compile C source to object
 ## Compile C source to object
 ## Add include paths for the core and the sketch so Arduino CLI can find Arduino.h
-recipe.c.o.pattern={compiler.path}{compiler.c.cmd} {compiler.c.flags} -I{runtime.platform.path}/cores/{build.core} -I{build.path}/sketch -c -o {build.path}/{object_file} {source_file}
+recipe.c.o.pattern=sh -c 'mkdir -p "$(dirname "{build.path}/{object_file}")" && {compiler.path}{compiler.c.cmd} {compiler.c.flags} -I{runtime.platform.path}/cores/{build.core} -I{build.path}/sketch -c -o "{build.path}/{object_file}" "{source_file}"'
 ## Compile C++ source to object
-recipe.cpp.o.pattern={compiler.path}{compiler.cpp.cmd} {compiler.cxx.flags} -I{runtime.platform.path}/cores/{build.core} -I{build.path}/sketch -c -o {build.path}/{object_file} {source_file}
+recipe.cpp.o.pattern=sh -c 'mkdir -p "$(dirname "{build.path}/{object_file}")" && {compiler.path}{compiler.cpp.cmd} {compiler.cxx.flags} -I{runtime.platform.path}/cores/{build.core} -I{build.path}/sketch -c -o "{build.path}/{object_file}" "{source_file}"'
 # Link objects into a native executable
 recipe.c.link.pattern={compiler.path}{compiler.cpp.cmd} {compiler.ldflags} {object_files} -o {build.path}/{build.project_name}.out
 
