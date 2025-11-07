@@ -1,12 +1,11 @@
-#include <stdio.h>
-
 void setup()
 {
-    // 何もしない
-    printf("Setup complete.\n");
+    Serial.begin(115200);
+    Serial.println("setup");
 }
 
 void loop()
 {
-    // 何もしない
+    Serial.println("loop");
+    delay(1000);
 }
