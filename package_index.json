@@ -20,10 +20,10 @@
         {
           "name": "Native Arduino Core",
           "architecture": "native",
-          "version": "0.0.24",
-          "url": "https://github.com/tanakamasayuki/native-arduino-core/releases/download/v0.0.24/native-arduino-core-0.0.24.zip",
-          "archiveFileName": "native-arduino-core-0.0.24.zip",
-          "checksum": "SHA-256:d2717763f4dc8b0c48f18a4a53ba3f75b6726dbf094c05252af455cd2e4968de"
+          "version": "0.0.25",
+          "url": "https://github.com/tanakamasayuki/native-arduino-core/releases/download/v0.0.25/native-arduino-core-0.0.25.zip",
+          "archiveFileName": "native-arduino-core-0.0.25.zip",
+          "checksum": "SHA-256:b12c3f703f062d926c9522c9f20872e8075e99cdcbca9a9c9442b0d954e82a51"
         }
       ],
       "tools": []
