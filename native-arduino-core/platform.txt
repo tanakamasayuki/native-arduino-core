@@ -11,6 +11,8 @@ compiler.cpp.cmd=g++
 compiler.ar.cmd=ar
 compiler.objcopy.cmd=objcopy
 compiler.size.cmd=size
+compiler.ar.flags=
+compiler.ar.extra_flags=
 
 # (No upload.tool.default) Upload should be handled by recipe.upload.pattern; avoid tools.* usage in boards.
 
@@ -28,7 +30,7 @@ recipe.cpp.o.pattern={compiler.path}{compiler.cpp.cmd} {compiler.cxx.flags} -I{r
 # Create static archive from objects
 # Ensure archive exists at both {build.path}/{archive_file} and {build.path}/core/<basename>
 # to be compatible with different CLI/tool behaviours that expect either path.
-recipe.ar.pattern=sh -c '{compiler.path}{compiler.ar.cmd} rcs {build.path}/{archive_file} {object_file} && mkdir -p {build.path}/core && cp -f {build.path}/{archive_file} {build.path}/core/{archive_file}'
+recipe.ar.pattern={compiler.path}{compiler.ar.cmd} {compiler.ar.flags} {compiler.ar.extra_flags} {archive_file_path} {object_file}
 
 # Link objects into a native executable
 # Link objects and core archive into a native executable.
@@ -37,12 +39,12 @@ recipe.ar.pattern=sh -c '{compiler.path}{compiler.ar.cmd} rcs {build.path}/{arch
 # We wrap the link in sh -c so we can run the produced .out immediately after linking.
 # Link (C) and then run the produced binary.
 # We wrap the link in sh -c so we can run the produced .out immediately after linking.
-recipe.c.link.pattern={compiler.path}{compiler.cpp.cmd} {compiler.ldflags} {build.path}/{archive_file} {object_files} -o {build.path}/{build.project_name}.out
+recipe.c.link.pattern={compiler.path}{compiler.cpp.cmd} {compiler.ldflags} {archive_file_path} {object_files} -o {build.path}/{build.project_name}.out
 # Ensure both C and C++ link recipes exist. Some CLI versions call the C++ link recipe
 # when linking C++ sketches, so provide an identical cpp variant.
 
 # Link (C++) and then run the produced binary.
-recipe.cpp.link.pattern={compiler.path}{compiler.cpp.cmd} {compiler.ldflags} {build.path}/{archive_file} {object_files} -o {build.path}/{build.project_name}.out
+recipe.cpp.link.pattern={compiler.path}{compiler.cpp.cmd} {compiler.ldflags} {archive_file_path} {object_files} -o {build.path}/{build.project_name}.out
 
 # ELF/linker (combine) settings
 # Some Arduino CLI/toolchains call a "combine" recipe to merge objects and archives
@@ -53,11 +55,11 @@ compiler.c.elf.flags={compiler.cxx.flags}
 
 # Combine (link) pattern: combine all object files and the core archive into the final executable.
 # Using start-group/end-group helps resolve circular deps between archives and objects.
-recipe.c.combine.pattern={compiler.path}{compiler.c.elf.cmd} {compiler.c.elf.flags} {compiler.ldflags} -Wl,--start-group {object_files} {build.path}/{archive_file} -Wl,--end-group -o {build.path}/{build.project_name}.out
-recipe.cpp.combine.pattern={compiler.path}{compiler.c.elf.cmd} {compiler.c.elf.flags} {compiler.ldflags} -Wl,--start-group {object_files} {build.path}/{archive_file} -Wl,--end-group -o {build.path}/{build.project_name}.out
+recipe.c.combine.pattern={compiler.path}{compiler.c.elf.cmd} {compiler.c.elf.flags} {compiler.ldflags} -Wl,--start-group {object_files} {archive_file_path} -Wl,--end-group -o {build.path}/{build.project_name}.out
+recipe.cpp.combine.pattern={compiler.path}{compiler.c.elf.cmd} {compiler.c.elf.flags} {compiler.ldflags} -Wl,--start-group {object_files} {archive_file_path} -Wl,--end-group -o {build.path}/{build.project_name}.out
 
 # Upload recipe: execute the produced binary locally
-recipe.upload.pattern=sh -c 'chmod +x "{build.path}/{build.project_name}.out" 2>/dev/null || true; "{build.path}/{build.project_name}.out"'
+#recipe.upload.pattern=sh -c 'chmod +x "{build.path}/{build.project_name}.out" 2>/dev/null || true; "{build.path}/{build.project_name}.out"'
 tools.run.upload.pattern="{build.path}/{build.project_name}.out"
 
 # Size command
