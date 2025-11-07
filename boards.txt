@@ -2,6 +2,14 @@
 native.name=Native (Generic)
 native.build.core=native
 native.menu.example=BlankSketch
+
+# Menu to enable SDL2 linking. Default is 'disabled'. When enabled, -lSDL2
+# will be added to the link command via build.extra_flags.
+native.menu.sdl2=SDL2
+native.menu.sdl2.disabled=Disabled
+native.menu.sdl2.enabled=Enabled
+native.menu.sdl2.disabled.build.extra_flags=
+native.menu.sdl2.enabled.build.extra_flags=-DNATIVE_USE_SDL2 -lSDL2
 native.upload.tool.run=run
 native.upload.tool.default=run
 native.upload.protocol=run
