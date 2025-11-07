@@ -11,7 +11,7 @@ compiler.cpp.cmd=g++
 compiler.ar.cmd=ar
 compiler.objcopy.cmd=objcopy
 compiler.size.cmd=size
-compiler.ar.flags=
+compiler.ar.flags=rcs
 compiler.ar.extra_flags=
 
 # (No upload.tool.default) Upload should be handled by recipe.upload.pattern; avoid tools.* usage in boards.
@@ -30,7 +30,7 @@ recipe.cpp.o.pattern={compiler.path}{compiler.cpp.cmd} {compiler.cxx.flags} -I{r
 # Create static archive from objects
 # Ensure archive exists at both {build.path}/{archive_file} and {build.path}/core/<basename>
 # to be compatible with different CLI/tool behaviours that expect either path.
-recipe.ar.pattern={compiler.path}{compiler.ar.cmd} {compiler.ar.flags} {compiler.ar.extra_flags} {archive_file_path} {object_file}
+recipe.ar.pattern={compiler.path}{compiler.ar.cmd} {compiler.ar.flags} {compiler.ar.extra_flags} "{archive_file_path}" "{object_file}"
 
 # Link objects into a native executable
 # Link objects and core archive into a native executable.
