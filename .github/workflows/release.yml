@@ -39,28 +39,19 @@ jobs:
           VER=${{ steps.ver.outputs.version }}
           python3 scripts/build_package.py --version "$VER" --repo "${{ github.repository }}"
 
-      - name: Create GitHub Release
+      - name: Publish package to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./package
+          publish_branch: gh-pages
+
+      - name: Create GitHub Release and upload assets
         id: create_release
-        uses: actions/create-release@v1
+        uses: softprops/action-gh-release@v1
         with:
-          tag_name: v${{ steps.ver.outputs.version }}
-          release_name: v${{ steps.ver.outputs.version }}
-          draft: false
-          prerelease: false
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Upload core zip
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./native-arduino-core-${{ steps.ver.outputs.version }}.zip
-          asset_name: native-arduino-core-${{ steps.ver.outputs.version }}.zip
-          asset_content_type: application/zip
-
-      - name: Upload package_index.json
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./package_index.json
-          asset_name: package_index.json
-          asset_content_type: application/json
+          files: |
+            native-arduino-core-${{ steps.ver.outputs.version }}.zip
+            package_index.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
