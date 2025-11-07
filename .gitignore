@@ -1,0 +1,29 @@
+# Build artifacts
+/build/
+*.o
+*.out
+*.elf
+*.hex
+*.bin
+*.map
+*.zip
+
+# Arduino IDE / CLI
+.arduino15/
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Logs
+*.log
+
+# Node
+node_modules/

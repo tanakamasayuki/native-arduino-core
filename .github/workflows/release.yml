@@ -1,0 +1,61 @@
+name: Build and Release Native Arduino Core
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release (without v). If empty uses tag name without v'
+        required: false
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Determine version
+        id: ver
+        run: |
+          if [ -n "${{ github.event.inputs.version }}" ]; then
+            echo "version=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          else
+            # when triggered by tag push, GITHUB_REF_NAME holds the tag
+            TAG=${GITHUB_REF_NAME:-$(git describe --tags --abbrev=0)}
+            # strip leading v if present
+            VER=${TAG#v}
+            echo "version=$VER" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build package and update index
+        run: |
+          VER=${{ steps.ver.outputs.version }}
+          python3 scripts/build_package.py --version "$VER" --repo "${{ github.repository }}"
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        with:
+          tag_name: v${{ steps.ver.outputs.version }}
+          release_name: v${{ steps.ver.outputs.version }}
+          draft: false
+          prerelease: false
+
+      - name: Upload core zip
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./native-arduino-core-${{ steps.ver.outputs.version }}.zip
+          asset_name: native-arduino-core-${{ steps.ver.outputs.version }}.zip
+          asset_content_type: application/zip
+
+      - name: Upload package_index.json
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./package_index.json
+          asset_name: package_index.json
+          asset_content_type: application/json

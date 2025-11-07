@@ -1,0 +1,24 @@
+{
+    "packages": [
+        {
+            "name": "lang-ship",
+            "maintainer": "tanakamasayuki",
+            "websiteURL": "https://github.com/tanakamasayuki/native-arduino-core",
+            "email": "",
+            "help": {
+                "online": "https://github.com/tanakamasayuki/native-arduino-core"
+            },
+            "platforms": [
+                {
+                    "name": "Native Arduino Core",
+                    "architecture": "native",
+                    "version": "0.0.1",
+                    "url": "https://github.com/tanakamasayuki/native-arduino-core/releases/download/v0.0.1/native-arduino-core-0.0.1.zip",
+                    "archiveFileName": "native-arduino-core-0.0.1.zip",
+                    "checksum": "SHA-256:c9f181bac795d15566ed48c125ec47bf64a80bc585b1fc5feb23fa020292536d"
+                }
+            ],
+            "tools": []
+        }
+    ]
+}
