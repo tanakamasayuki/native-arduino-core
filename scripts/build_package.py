@@ -7,8 +7,6 @@ Create a release ZIP with the layout:
 native-arduino-core/
   cores/
     native/
-  variants/
-    generic/
 
 Compute SHA-256 checksum for the ZIP and update package_index.json in the repo root
 while preserving older entries.
@@ -78,17 +76,6 @@ def main():
     else:
         print("Warning: cores/ directory not found in repo; creating empty cores/native placeholder")
         (cores_dst / "native").mkdir(parents=True, exist_ok=True)
-
-    # Copy variants/generic or create placeholder
-    variants_src = root / "variants" / "generic"
-    variants_dst = top_dir / "variants" / "generic"
-    if variants_src.exists() and variants_src.is_dir():
-        copy_tree_contents(variants_src, variants_dst)
-        print(f"Copied variants/generic from {variants_src} to {variants_dst}")
-    else:
-        variants_dst.mkdir(parents=True, exist_ok=True)
-        (variants_dst / "README.txt").write_text("generic variant placeholder")
-        print("Created placeholder variants/generic/README.txt")
 
     # Optionally put platform.txt and boards.txt into appropriate places
     # Many Arduino packages include platform.txt under the top-level folder or in cores;
