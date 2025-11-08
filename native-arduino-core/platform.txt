@@ -14,6 +14,9 @@ compiler.size.cmd=size
 compiler.ar.flags=rcs
 compiler.ar.extra_flags=
 
+# extra_flags
+extra_flags={build.extra_flags_sdl2} {build.extra_flags_m5gfx_board} {build.extra_flags_m5gfx_scale} {build.extra_flags_m5gfx_rotation}
+
 # (No upload.tool.default) Upload should be handled by recipe.upload.pattern; avoid tools.* usage in boards.
 
 # Compiler and linker flags
