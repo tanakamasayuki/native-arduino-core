@@ -59,6 +59,24 @@ jobs:
           VER=${{ steps.ver.outputs.version }}
           python3 scripts/build_package.py --version "$VER" --repo "${{ github.repository }}"
 
+      - name: Update sketch.yaml platform versions in libraries
+        run: |
+          set -euo pipefail
+          VER=${{ steps.ver.outputs.version }}
+          echo "Searching for libraries/*/sketch.yaml to update platform version to $VER"
+          # Find sketch.yaml files under libraries/ and replace the version inside parentheses
+          find libraries -type f -name 'sketch.yaml' -print0 | while IFS= read -r -d '' f; do
+            if grep -qE 'platform: lang-ship:native \([^)]*\)' "$f"; then
+              echo "Updating $f"
+              # Use a portable sed expression to replace the parentheses content
+              # Create a backup then remove it to be safe on runners that use BSD sed
+              sed -E -i.bak "s/(platform: lang-ship:native) *\([^)]*\)/\1 ($VER)/g" "$f"
+              rm -f "${f}.bak" || true
+              git add "$f"
+            fi
+          done
+
+
       - name: Commit package_index.json back to repository
         run: |
           set -e
