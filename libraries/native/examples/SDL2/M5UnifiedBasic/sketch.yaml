@@ -3,7 +3,7 @@ profiles:
   generic:
     fqbn: lang-ship:native:generic:sdl2=enabled,m5gfx_board=board_M5Stack
     platforms:
-      - platform: lang-ship:native (0.1.12)
+      - platform: lang-ship:native (0.1.13)
         platform_index_url: https://tanakamasayuki.github.io/native-arduino-core/package_index.json
     libraries:
       - M5Unified (0.2.10)
