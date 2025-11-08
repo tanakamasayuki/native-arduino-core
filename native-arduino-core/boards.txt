@@ -1,13 +1,66 @@
 menu.sdl2=SDL2
+menu.m5gfx_board=M5GFX_BOARD
+menu.m5gfx_scale=M5GFX_SCALE
+menu.m5gfx_rotation=M5GFX_ROTATION
 
 ## Board: lang-ship:native:generic
 generic.name=Native (Generic)
 generic.build.core=native
+generic.build.board=NATIVE_GENERIC
 generic.menu.sdl2=disabled
 generic.menu.sdl2.disabled=Disabled
 generic.menu.sdl2.enabled=Enabled
 generic.menu.sdl2.disabled.build.extra_flags=
 generic.menu.sdl2.enabled.build.extra_flags=-DNATIVE_USE_SDL2 -lSDL2
+generic.menu.m5gfx_board=disabled
+generic.menu.m5gfx_board.disabled=Disabled
+generic.menu.m5gfx_board.disabled.build.extra_flags=
+generic.menu.m5gfx_board.board_M5Stack=board_M5Stack
+generic.menu.m5gfx_board.board_M5Stack.build.extra_flags=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5Stack
+generic.menu.m5gfx_board.board_M5StackCore2=board_M5StackCore2
+generic.menu.m5gfx_board.board_M5StackCore2.build.extra_flags=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5StackCore2
+generic.menu.m5gfx_board.board_M5StackCoreS3=board_M5StackCoreS3
+generic.menu.m5gfx_board.board_M5StackCoreS3.build.extra_flags=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5StackCoreS3
+generic.menu.m5gfx_board.board_M5StackCoreInk=board_M5StackCoreInk
+generic.menu.m5gfx_board.board_M5StackCoreInk.build.extra_flags=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5StackCoreInk
+generic.menu.m5gfx_board.board_M5StickCPlus=board_M5StickCPlus
+generic.menu.m5gfx_board.board_M5StickCPlus.build.extra_flags=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5StickCPlus
+generic.menu.m5gfx_board.board_M5StickCPlus2=board_M5StickCPlus2
+generic.menu.m5gfx_board.board_M5StickCPlus2.build.extra_flags=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5StickCPlus2
+generic.menu.m5gfx_board.board_M5Dial=board_M5Dial
+generic.menu.m5gfx_board.board_M5Dial.build.extra_flags=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5Dial
+generic.menu.m5gfx_board.board_M5Tab5=board_M5Tab5
+generic.menu.m5gfx_board.board_M5Tab5.build.extra_flags=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5Tab5
+generic.menu.m5gfx_scale=disabled
+generic.menu.m5gfx_scale.disabled=Disabled
+generic.menu.m5gfx_scale.disabled.build.extra_flags=
+generic.menu.m5gfx_scale.x0_5=x0.5
+generic.menu.m5gfx_scale.x0_5.build.extra_flags=-DM5GFX_SCALE=0.5
+generic.menu.m5gfx_scale.x2=x2
+generic.menu.m5gfx_scale.x2.build.extra_flags=-DM5GFX_SCALE=2
+generic.menu.m5gfx_scale.x3=x3
+generic.menu.m5gfx_scale.x3.build.extra_flags=-DM5GFX_SCALE=3
+generic.menu.m5gfx_scale.x4=x4
+generic.menu.m5gfx_scale.x4.build.extra_flags=-DM5GFX_SCALE=4
+generic.menu.m5gfx_rotation=disabled
+generic.menu.m5gfx_rotation.disabled=Disabled
+generic.menu.m5gfx_rotation.disabled.build.extra_flags=
+generic.menu.m5gfx_rotation.r0=0
+generic.menu.m5gfx_rotation.r0.build.extra_flags=-M5GFX_ROTATION=0
+generic.menu.m5gfx_rotation.r1=1
+generic.menu.m5gfx_rotation.r1.build.extra_flags=-M5GFX_ROTATION=1
+generic.menu.m5gfx_rotation.r2=2
+generic.menu.m5gfx_rotation.r2.build.extra_flags=-M5GFX_ROTATION=2
+generic.menu.m5gfx_rotation.r3=3
+generic.menu.m5gfx_rotation.r3.build.extra_flags=-M5GFX_ROTATION=3
+generic.menu.m5gfx_rotation.r4=4
+generic.menu.m5gfx_rotation.r4.build.extra_flags=-M5GFX_ROTATION=4
+generic.menu.m5gfx_rotation.r5=5
+generic.menu.m5gfx_rotation.r5.build.extra_flags=-M5GFX_ROTATION=5
+generic.menu.m5gfx_rotation.r6=6
+generic.menu.m5gfx_rotation.r6.build.extra_flags=-M5GFX_ROTATION=6
+generic.menu.m5gfx_rotation.r7=7
+generic.menu.m5gfx_rotation.r7.build.extra_flags=-M5GFX_ROTATION=7
 generic.upload.tool.run=run
 generic.upload.tool.default=run
 generic.upload.protocol=run
