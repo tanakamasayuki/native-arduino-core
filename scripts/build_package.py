@@ -77,6 +77,15 @@ def main():
         print("Warning: cores/ directory not found in repo; creating empty cores/native placeholder")
         (cores_dst / "native").mkdir(parents=True, exist_ok=True)
 
+    # Copy libraries (if present)
+    libs_src = root / "libraries"
+    libs_dst = top_dir / "libraries"
+    if libs_src.exists() and libs_src.is_dir():
+        copy_tree_contents(libs_src, libs_dst)
+        print(f"Copied libraries from {libs_src} to {libs_dst}")
+    else:
+        print("No libraries/ directory found in repo; skipping libraries copy")
+
     # Optionally put platform.txt and boards.txt into appropriate places
     # Many Arduino packages include platform.txt under the top-level folder or in cores;
     # we will copy platform.txt and boards.txt from repo root if present into top_dir
