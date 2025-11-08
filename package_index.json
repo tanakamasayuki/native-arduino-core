@@ -136,6 +136,14 @@
           "url": "https://github.com/tanakamasayuki/native-arduino-core/releases/download/v0.1.15/native-arduino-core-0.1.15.zip",
           "archiveFileName": "native-arduino-core-0.1.15.zip",
           "checksum": "SHA-256:7449bcdf7672be6b51fb55d40371a60ca0ed1b29af993450b6807e7fe9aaa836"
+        },
+        {
+          "name": "Native Arduino Core",
+          "architecture": "native",
+          "version": "0.1.16",
+          "url": "https://github.com/tanakamasayuki/native-arduino-core/releases/download/v0.1.16/native-arduino-core-0.1.16.zip",
+          "archiveFileName": "native-arduino-core-0.1.16.zip",
+          "checksum": "SHA-256:1584cedcaf1051efd4b51458a887cab5a40eb120b8acabbebf56ecbf19f3b652"
         }
       ],
       "tools": []
