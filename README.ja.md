@@ -67,6 +67,7 @@ lang-ship:native:SLD2_M5Tab5
   3. 環境変数 `PATH` に **必ず** `C:\msys64\ucrt64\bin` を追加します（`pacman` などを直接叩きたい場合は `C:\msys64\usr\bin`、MinGW ツールチェーンを併用するなら `C:\msys64\mingw64\bin` も追加）。  
      設定手順：Windows 設定 → システム → バージョン情報 → 「システムの詳細設定」 → 「環境変数」 → 「システム環境変数」の `Path` → 「編集」 → 「新規」で `C:\msys64\ucrt64\bin`（必要に応じて他のパス）を追加 → OK を押して閉じる → 新しいターミナルを開き直す。  
      追加後に `g++ --version` や `sdl2-config --version` で確認できます。
+  4. Windows ネイティブ環境は I/O やプロセス生成のオーバーヘッドでビルド時間が長くなる傾向があります。可能であれば WSL（Ubuntu など）上で CLI を実行し、ホスト PC 側はエディタのみとする運用を推奨します。VS Code の *Arduino CLI Wrapper* 拡張（[Marketplace](https://marketplace.visualstudio.com/items?itemName=tanakamasayuki.vscode-arduino-cli-wrapper)）を使えば、Windows からリモート開発で WSL 上のビルド・実行をトリガーできます。
 
 - **Linux / macOS**  
   SDL2 を含むネイティブ開発環境の整備手順は LovyanGFX 公式ドキュメント（[M5GFX/examples/PlatformIO_SDL](https://github.com/m5stack/M5GFX/tree/master/examples/PlatformIO_SDL)）が詳しいです。概要は以下のとおりです。

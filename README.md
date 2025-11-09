@@ -68,6 +68,7 @@ Use them when you want `LovyanGFX` / `M5Unified` sketches to pop up in an SDL2 w
   3. Add **at least** `C:\msys64\ucrt64\bin` to the system `PATH` (append `C:\msys64\usr\bin` if you want the MSYS tools, or `C:\msys64\mingw64\bin` when mixing MinGW targets).  
      Settings → System → About → “Advanced system settings” → “Environment Variables” → select the `Path` entry under *System variables* → Edit → New → paste `C:\msys64\ucrt64\bin` (and any other needed paths) → OK.  
      Open a fresh terminal and verify with `g++ --version` / `sdl2-config --version`.
+  4. Native Windows builds incur heavier process/IO overhead, so compile times are noticeably slower than WSL/Linux. When possible, run Arduino CLI inside WSL (Ubuntu, etc.) while editing on Windows—VS Code’s *Arduino CLI Wrapper* extension ([Marketplace link](https://marketplace.visualstudio.com/items?itemName=tanakamasayuki.vscode-arduino-cli-wrapper)) supports remote builds, so you can trigger compile/upload from Windows while the actual work happens inside WSL.
 
 - **Linux / macOS**  
   The LovyanGFX project documents the required native/SDL2 toolchain at [M5GFX/examples/PlatformIO_SDL](https://github.com/m5stack/M5GFX/tree/master/examples/PlatformIO_SDL). In short:
