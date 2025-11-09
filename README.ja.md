@@ -58,7 +58,7 @@ lang-ship:native:SLD2_M5Tab5
      ```powershell
      winget install MSYS2.MSYS2
      ```
-  2. MSYS2 のターミナル（`C:\msys64\usr\bin\bash.exe`）**または** PATH に `C:\msys64\usr\bin` を追加した後の通常の `cmd` / PowerShell から、以下を実行して gcc / gdb と SDL2 を入れます：  
+  2. gcc / gdb と SDL2 を入れます：  
      ```bash
      C:\msys64\usr\bin\pacman -S mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-gdb
      C:\msys64\usr\bin\pacman -S mingw-w64-ucrt-x86_64-SDL2
