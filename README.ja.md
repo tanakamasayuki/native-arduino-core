@@ -51,21 +51,14 @@ lang-ship:native:SLD2_M5Tab5
 - `.github/workflows/release.yml`: タグ push または手動実行で上記スクリプトを実行し、`package_index.json` を `main` にコミット、ZIP と index を Release に添付し、`package/` 以下を `gh-pages` へ公開。
 - `package_index.json`: 最新リリースのメタデータを保持（ワークフローから自動更新）。
 
-### Arduino IDE での Boards Manager 追加
-
-1. Arduino IDE の *ファイル → 環境設定* を開き、**追加のボードマネージャのURL** に `https://tanakamasayuki.github.io/native-arduino-core/package_index.json` を追記します。
-2. *ツール → ボード → ボードマネージャ* を開き、`Native` で検索して **Native Arduino Core**（lang-ship）をインストールします。
-
-## Arduino CLI / IDE での導入
-
-### 事前準備（gcc / SDL2 のインストール）
+## 事前準備（gcc / SDL2 のインストール）
 
 - **Windows**  
   1. MSYS2 を winget で導入：  
      ```powershell
      winget install MSYS2.MSYS2
      ```
-  2. gcc / gdb と SDL2 を入れます：  
+  2. MSYS2 のターミナル（`C:\msys64\usr\bin\bash.exe`）**または** PATH に `C:\msys64\usr\bin` を追加した後の通常の `cmd` / PowerShell から、以下を実行して gcc / gdb と SDL2 を入れます：  
      ```bash
      C:\msys64\usr\bin\pacman -S mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-gdb
      C:\msys64\usr\bin\pacman -S mingw-w64-ucrt-x86_64-SDL2
@@ -88,6 +81,15 @@ lang-ship:native:SLD2_M5Tab5
     brew install sdl2
     ```
   SDL2 を使わない場合でも `gcc` / `g++`（Xcode Command Line Tools や build-essential）を先に入れておくとスムーズです。
+
+## Arduino IDE での導入
+
+1. Arduino IDE の *ファイル → 環境設定* を開き、**追加のボードマネージャのURL** に `https://tanakamasayuki.github.io/native-arduino-core/package_index.json` を追記します（複数ある場合はカンマ区切り）。
+2. *ツール → ボード → ボードマネージャ* を開き、`Native` で検索して **Native Arduino Core**（lang-ship）をインストールします。
+3. *ツール → ボード → Native Arduino Core → Native (Generic)* を選び、例として *ファイル → スケッチ例 → Native → Plane → BlankSketch* をビルドしてください。実行はホスト PC 上で行われるため、シリアルポート指定は不要です。
+4. LovyanGFX / M5Unified の SDL デモを動かす場合は、コンパイル前に *ツール* メニューで `sdl2` を **Enabled**、`m5gfx_*` オプションを目的の値に設定します。
+
+## Arduino CLI での導入
 
 1. 上記の手順でホストに `gcc` / `g++`（SDL2 を使う場合は SDL2 ランタイム・開発ヘッダ）を用意。
 2. Boards Manager に index URL を追加し、コアをインストール：

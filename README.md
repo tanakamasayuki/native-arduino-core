@@ -52,21 +52,14 @@ Use them when you want `LovyanGFX` / `M5Unified` sketches to pop up in an SDL2 w
 - `.github/workflows/release.yml`: runs the packaging script on tag push or manual dispatch, pushes `package_index.json` back to `main`, publishes the ZIP + index to GitHub Releases, and mirrors the whole `package/` folder (including an updated `package_index.json`) to the `gh-pages` branch.
 - `package_index.json`: checked in for convenience; the release workflow keeps it synchronized with the latest build.
 
-### Installing via Arduino IDE Boards Manager
-
-1. Open *File → Preferences* and add `https://tanakamasayuki.github.io/native-arduino-core/package_index.json` to **Additional Boards Manager URLs**.
-2. Open *Tools → Board → Boards Manager…*, search for “Native”, and install **Native Arduino Core** published by `lang-ship`.
-
-## Getting started with Arduino CLI / IDE
-
-### Prerequisites (install host gcc/g++ and SDL2)
+## Prerequisites (install host gcc/g++ and SDL2)
 
 - **Windows**
   1. Install MSYS2 via winget:
      ```powershell
      winget install MSYS2.MSYS2
      ```
-  2. Install gcc/gdb and SDL2:
+  2. Open the MSYS2 shell (`C:\msys64\usr\bin\bash.exe` / MinTTY) **or** run the following from `cmd`/PowerShell after adding `C:\msys64\usr\bin` to `PATH`, then install gcc/gdb and SDL2:
      ```bash
      C:\msys64\usr\bin\pacman -S mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-gdb
      C:\msys64\usr\bin\pacman -S mingw-w64-ucrt-x86_64-SDL2
@@ -89,6 +82,15 @@ Use them when you want `LovyanGFX` / `M5Unified` sketches to pop up in an SDL2 w
     brew install sdl2
     ```
   Even if you skip SDL2, make sure the host `gcc`/`g++` (build-essential or Xcode Command Line Tools) is installed before compiling.
+
+## Arduino IDE workflow
+
+1. Open *File → Preferences* and add `https://tanakamasayuki.github.io/native-arduino-core/package_index.json` to **Additional Boards Manager URLs** (keep existing entries by separating them with commas).
+2. Open *Tools → Board → Boards Manager…*, search for “Native”, and install **Native Arduino Core** published by `lang-ship`.
+3. Select *Tools → Board → Native Arduino Core → Native (Generic)*, then build an example such as *File → Examples → Native → Plane → BlankSketch*. Sketches run locally, so no serial port selection is required.
+4. For LovyanGFX / M5Unified SDL demos, enable the board menus under *Tools* (`sdl2=enabled` and the desired `m5gfx_*` options) before compiling.
+
+## Arduino CLI workflow
 
 1. Ensure the host `gcc`/`g++` (and SDL2 when needed) are installed as described above.
 2. Register the Boards Manager index:
