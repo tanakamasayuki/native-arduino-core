@@ -1,11 +1,10 @@
 
 profiles:
   generic:
-    fqbn: lang-ship:native:generic:sdl2=enabled,m5gfx_board=board_M5Stack,m5gfx_scale=x1,m5gfx_rotation=r0
+    fqbn: lang-ship:native:generic:sdl2=enabled
     platforms:
       - platform: lang-ship:native (0.1.20)
         platform_index_url: https://tanakamasayuki.github.io/native-arduino-core/package_index.json
     libraries:
-      - M5Unified (0.2.10)
-      - M5GFX (0.2.17)
+      - LovyanGFX (1.2.7)
     port: NONE
