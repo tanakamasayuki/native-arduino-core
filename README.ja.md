@@ -53,7 +53,38 @@ lang-ship:native:SLD2_M5Tab5
 
 ## Arduino CLI / IDE での導入
 
-1. ホストの `gcc` / `g++`（SDL2 を使うなら `libsdl2-dev`, `brew install sdl2`, MSYS2 SDL2 など）を用意。
+### 事前準備（gcc / SDL2 のインストール）
+
+- **Windows**  
+  1. MSYS2 を winget で導入：  
+     ```powershell
+     winget install MSYS2.MSYS2
+     ```
+  2. `C:\msys64\usr\bin\bash.exe` を起動し、gcc / gdb と SDL2 を入れます：  
+     ```bash
+     C:\msys64\usr\bin\pacman -S mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-gdb
+     C:\msys64\usr\bin\pacman -S mingw-w64-ucrt-x86_64-SDL2
+     ```
+     SDL2 は LovyanGFX / M5Unified を使う場合に必須です。
+  3. 環境変数 `PATH` に **必ず** `C:\msys64\ucrt64\bin` を追加します（`pacman` などを直接叩きたい場合は `C:\msys64\usr\bin`、MinGW ツールチェーンを併用するなら `C:\msys64\mingw64\bin` も追加）。  
+     設定手順：Windows 設定 → システム → バージョン情報 → 「システムの詳細設定」 → 「環境変数」 → 「システム環境変数」の `Path` → 「編集」 → 「新規」で `C:\msys64\ucrt64\bin`（必要に応じて他のパス）を追加 → OK を押して閉じる → 新しいターミナルを開き直す。  
+     追加後に `g++ --version` や `sdl2-config --version` で確認できます。
+
+- **Linux / macOS**  
+  SDL2 を含むネイティブ開発環境の整備手順は LovyanGFX 公式ドキュメント（[M5GFX/examples/PlatformIO_SDL](https://github.com/m5stack/M5GFX/tree/master/examples/PlatformIO_SDL)）が詳しいです。概要は以下のとおりです。
+  - Linux（Ubuntu 系）：  
+    ```bash
+    sudo apt update
+    sudo apt install build-essential libsdl2 libsdl2-dev
+    ```
+  - macOS：  
+    ```bash
+    xcode-select --install
+    brew install sdl2
+    ```
+  SDL2 を使わない場合でも `gcc` / `g++`（Xcode Command Line Tools や build-essential）を先に入れておくとスムーズです。
+
+1. 上記の手順でホストに `gcc` / `g++`（SDL2 を使う場合は SDL2 ランタイム・開発ヘッダ）を用意。
 2. Boards Manager に index URL を追加し、コアをインストール：
 
    ```bash

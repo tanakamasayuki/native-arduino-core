@@ -54,7 +54,38 @@ Use them when you want `LovyanGFX` / `M5Unified` sketches to pop up in an SDL2 w
 
 ## Getting started with Arduino CLI / IDE
 
-1. Make sure host `gcc`/`g++` (and `SDL2` dev files if you plan to enable the SDL2 menu) are on `PATH`.
+### Prerequisites (install host gcc/g++ and SDL2)
+
+- **Windows**
+  1. Install MSYS2 via winget:
+     ```powershell
+     winget install MSYS2.MSYS2
+     ```
+  2. Open `C:\msys64\usr\bin\bash.exe` (or the MSYS2 MinTTY) and install gcc/gdb and SDL2:
+     ```bash
+     C:\msys64\usr\bin\pacman -S mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-gdb
+     C:\msys64\usr\bin\pacman -S mingw-w64-ucrt-x86_64-SDL2
+     ```
+     SDL2 is only required if you plan to run the LovyanGFX / M5Unified SDL examples.
+  3. Add **at least** `C:\msys64\ucrt64\bin` to the system `PATH` (append `C:\msys64\usr\bin` if you want the MSYS tools, or `C:\msys64\mingw64\bin` when mixing MinGW targets).  
+     Settings → System → About → “Advanced system settings” → “Environment Variables” → select the `Path` entry under *System variables* → Edit → New → paste `C:\msys64\ucrt64\bin` (and any other needed paths) → OK.  
+     Open a fresh terminal and verify with `g++ --version` / `sdl2-config --version`.
+
+- **Linux / macOS**  
+  The LovyanGFX project documents the required native/SDL2 toolchain at [M5GFX/examples/PlatformIO_SDL](https://github.com/m5stack/M5GFX/tree/master/examples/PlatformIO_SDL). In short:
+  - Linux (Ubuntu/Debian):
+    ```bash
+    sudo apt update
+    sudo apt install build-essential libsdl2 libsdl2-dev
+    ```
+  - macOS:
+    ```bash
+    xcode-select --install
+    brew install sdl2
+    ```
+  Even if you skip SDL2, make sure the host `gcc`/`g++` (build-essential or Xcode Command Line Tools) is installed before compiling.
+
+1. Ensure the host `gcc`/`g++` (and SDL2 when needed) are installed as described above.
 2. Register the Boards Manager index:
 
    ```bash
