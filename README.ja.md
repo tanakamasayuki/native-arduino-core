@@ -60,7 +60,7 @@ lang-ship:native:SLD2_M5Tab5
      ```powershell
      winget install MSYS2.MSYS2
      ```
-  2. `C:\msys64\usr\bin\bash.exe` を起動し、gcc / gdb と SDL2 を入れます：  
+  2. gcc / gdb と SDL2 を入れます：  
      ```bash
      C:\msys64\usr\bin\pacman -S mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-gdb
      C:\msys64\usr\bin\pacman -S mingw-w64-ucrt-x86_64-SDL2

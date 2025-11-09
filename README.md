@@ -61,7 +61,7 @@ Use them when you want `LovyanGFX` / `M5Unified` sketches to pop up in an SDL2 w
      ```powershell
      winget install MSYS2.MSYS2
      ```
-  2. Open `C:\msys64\usr\bin\bash.exe` (or the MSYS2 MinTTY) and install gcc/gdb and SDL2:
+  2. Install gcc/gdb and SDL2:
      ```bash
      C:\msys64\usr\bin\pacman -S mingw-w64-ucrt-x86_64-gcc mingw-w64-ucrt-x86_64-gdb
      C:\msys64\usr\bin\pacman -S mingw-w64-ucrt-x86_64-SDL2
