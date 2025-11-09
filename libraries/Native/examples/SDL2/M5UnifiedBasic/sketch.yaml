@@ -1,7 +1,7 @@
 
 profiles:
   generic:
-    fqbn: lang-ship:native:generic:sdl2=enabled,m5gfx_board=board_M5Stack,m5gfx_scale=x2,m5gfx_rotation=r1
+    fqbn: lang-ship:native:generic:sdl2=enabled,m5gfx_board=board_M5Stack,m5gfx_scale=x8,m5gfx_rotation=r0
     platforms:
       - platform: lang-ship:native (0.1.19)
         platform_index_url: https://tanakamasayuki.github.io/native-arduino-core/package_index.json
