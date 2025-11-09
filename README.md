@@ -52,6 +52,11 @@ Use them when you want `LovyanGFX` / `M5Unified` sketches to pop up in an SDL2 w
 - `.github/workflows/release.yml`: runs the packaging script on tag push or manual dispatch, pushes `package_index.json` back to `main`, publishes the ZIP + index to GitHub Releases, and mirrors the whole `package/` folder (including an updated `package_index.json`) to the `gh-pages` branch.
 - `package_index.json`: checked in for convenience; the release workflow keeps it synchronized with the latest build.
 
+### Installing via Arduino IDE Boards Manager
+
+1. Open *File → Preferences* and add `https://tanakamasayuki.github.io/native-arduino-core/package_index.json` to **Additional Boards Manager URLs**.
+2. Open *Tools → Board → Boards Manager…*, search for “Native”, and install **Native Arduino Core** published by `lang-ship`.
+
 ## Getting started with Arduino CLI / IDE
 
 ### Prerequisites (install host gcc/g++ and SDL2)

@@ -51,6 +51,11 @@ lang-ship:native:SLD2_M5Tab5
 - `.github/workflows/release.yml`: タグ push または手動実行で上記スクリプトを実行し、`package_index.json` を `main` にコミット、ZIP と index を Release に添付し、`package/` 以下を `gh-pages` へ公開。
 - `package_index.json`: 最新リリースのメタデータを保持（ワークフローから自動更新）。
 
+### Arduino IDE での Boards Manager 追加
+
+1. Arduino IDE の *ファイル → 環境設定* を開き、**追加のボードマネージャのURL** に `https://tanakamasayuki.github.io/native-arduino-core/package_index.json` を追記します。
+2. *ツール → ボード → ボードマネージャ* を開き、`Native` で検索して **Native Arduino Core**（lang-ship）をインストールします。
+
 ## Arduino CLI / IDE での導入
 
 ### 事前準備（gcc / SDL2 のインストール）
