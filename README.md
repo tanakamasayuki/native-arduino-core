@@ -75,7 +75,7 @@ Use them when you want `LovyanGFX` / `M5Unified` sketches to pop up in an SDL2 w
   - Linux (Ubuntu/Debian):
     ```bash
     sudo apt update
-    sudo apt install build-essential libsdl2 libsdl2-dev
+    sudo apt install build-essential libsdl2-dev
     ```
   - macOS:
     ```bash

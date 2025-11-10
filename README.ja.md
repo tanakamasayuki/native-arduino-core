@@ -74,7 +74,7 @@ lang-ship:native:SLD2_M5Tab5
   - Linux（Ubuntu 系）：  
     ```bash
     sudo apt update
-    sudo apt install build-essential libsdl2 libsdl2-dev
+    sudo apt install build-essential libsdl2-dev
     ```
   - macOS：  
     ```bash
