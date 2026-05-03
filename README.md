@@ -2,6 +2,8 @@
 
 English | 日本語: [README.ja.md](README.ja.md)
 
+https://tanakamasayuki.github.io/lang-ship-arduino-core/package_lang-ship_index.json
+
 Minimal Arduino core + Boards Manager package that drives the host PC’s native `gcc` / `g++` toolchain. Sketches compile into regular executables and the “upload” recipe simply runs that executable on the host.
 
 ## Highlights

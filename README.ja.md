@@ -3,6 +3,8 @@
 
 日本語 | English: [README.md](README.md)
 
+https://tanakamasayuki.github.io/lang-ship-arduino-core/package_lang-ship_index.json
+
 ホスト PC に入っている `gcc` / `g++` を Arduino IDE / Arduino CLI から直接呼び出し、ネイティブ実行ファイルとしてスケッチをビルドする最小構成の Arduino コア + Boards Manager パッケージです。`upload` はビルドしたバイナリをそのまま起動します。
 
 ## ハイライト
