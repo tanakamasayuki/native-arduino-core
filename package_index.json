@@ -1,7 +1,7 @@
 {
   "packages": [
     {
-      "name": "lang-ship-native",
+      "name": "lang-ship",
       "maintainer": "tanakamasayuki",
       "websiteURL": "https://github.com/tanakamasayuki/native-arduino-core",
       "email": "",
