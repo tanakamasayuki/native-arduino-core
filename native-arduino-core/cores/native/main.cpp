@@ -57,9 +57,15 @@ int main(int, char **)
 
 #else // !NATIVE_USE_SDL2 — 通常の native ランタイム
 
-// Provide a weak default main so user sketches can override main() if desired.
-// The linker will prefer a user-defined strong main over this weak symbol.
+// weak にしておくと、独自 main() を持つスケッチがあればそちらが優先される。
+// ただし Windows(mingw) では、静的アーカイブ (core.a) 内の weak main がリンカに
+// 取り込まれず、CRT が GUI 用 WinMain を探して
+// "undefined reference to `WinMain'" になる。そのため Windows では強い main にする。
+#ifdef _WIN32
+int main(int argc, char **argv);
+#else
 int main(int argc, char **argv) __attribute__((weak));
+#endif
 int main(int argc, char **argv)
 {
     // Arduino-style entrypoint: call setup() once, then loop() forever.

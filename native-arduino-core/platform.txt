@@ -23,12 +23,26 @@ build.extra_flags={build.extra_flags_sdl2} {build.extra_flags_m5gfx_board} {buil
 compiler.c.flags=-std=gnu11 -O2 -Wall -ffunction-sections -fdata-sections
 compiler.cxx.flags=-std=gnu++11 -O2 -Wall -ffunction-sections -fdata-sections
 compiler.ldflags=-Wl,--gc-sections
+# macOS uses Apple's linker (ld64), which does not understand the GNU option
+# "--gc-sections"; its equivalent is "-dead_strip".
+compiler.ldflags.macosx=-Wl,-dead_strip
 
 # Compile C source to object (add include paths for core and sketch)
 recipe.c.o.pattern={compiler.path}{compiler.c.cmd} {compiler.c.flags} {build.extra_flags} {includes} -I{runtime.platform.path}/cores/{build.core} -I{build.path}/sketch -c -o {object_file} {source_file}
 
 # Compile C++ source to object
 recipe.cpp.o.pattern={compiler.path}{compiler.cpp.cmd} {compiler.cxx.flags} {build.extra_flags} {includes} -I{runtime.platform.path}/cores/{build.core} -I{build.path}/sketch -c -o {object_file} {source_file}
+
+# Preprocessor recipe for library detection and function-prototype generation.
+# Force "-x c++" and "-E" so the merged sketch is always treated as C++ and
+# preprocessed. Some arduino-cli versions feed this step a file named
+# "<sketch>.ino.cpp.merged"; without "-x c++" g++ does not recognize the
+# ".merged" extension and treats it as a linker input ("linker input file
+# unused"), producing no output. That makes prototype generation fail on
+# Windows with "open ...\\sketch_merged.cpp: The system cannot find the file
+# specified." Defining this recipe makes the behavior consistent across
+# platforms and arduino-cli versions.
+recipe.preproc.macros={compiler.path}{compiler.cpp.cmd} {compiler.cxx.flags} {build.extra_flags} {includes} -I{runtime.platform.path}/cores/{build.core} -I{build.path}/sketch -w -x c++ -E -CC "{source_file}" -o "{preprocessed_file_path}"
 
 # Create static archive from objects
 # Ensure archive exists at both {build.path}/{archive_file} and {build.path}/core/<basename>
@@ -60,6 +74,10 @@ compiler.c.elf.flags={compiler.cxx.flags}
 # Using start-group/end-group helps resolve circular deps between archives and objects.
 recipe.c.combine.pattern={compiler.path}{compiler.c.elf.cmd} {compiler.c.elf.flags} {compiler.ldflags} -Wl,--start-group {object_files} {archive_file_path} -Wl,--end-group {build.extra_flags} -o {build.path}/{build.project_name}.out
 recipe.cpp.combine.pattern={compiler.path}{compiler.c.elf.cmd} {compiler.c.elf.flags} {compiler.ldflags} -Wl,--start-group {object_files} {archive_file_path} -Wl,--end-group {build.extra_flags} -o {build.path}/{build.project_name}.out
+# macOS variant: Apple's ld64 does not support GNU "--start-group/--end-group"
+# (and does not need them — it searches archives regardless of order).
+recipe.c.combine.pattern.macosx={compiler.path}{compiler.c.elf.cmd} {compiler.c.elf.flags} {compiler.ldflags} {object_files} {archive_file_path} {build.extra_flags} -o {build.path}/{build.project_name}.out
+recipe.cpp.combine.pattern.macosx={compiler.path}{compiler.c.elf.cmd} {compiler.c.elf.flags} {compiler.ldflags} {object_files} {archive_file_path} {build.extra_flags} -o {build.path}/{build.project_name}.out
 
 # Upload recipe: execute the produced binary locally
 tools.run.upload.pattern="{build.path}/{build.project_name}.out"
