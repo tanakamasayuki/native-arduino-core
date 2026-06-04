@@ -1,0 +1,15 @@
+# Changelog / 変更履歴
+
+## Unreleased
+- (EN) Ported the hardware-independent Arduino core types from `host-arduino-core` so plain `.ino` sketches work: `String` (`WString.h`), `Print` / `Printable` / `Stream`, and `pgmspace.h` (`F()` / `PSTR()`). `Serial` is now a `Stream` subclass writing to `stdout` (input from `stdin`), so `print(n, HEX)`, `println(value, digits)`, `String`, and `Printable` output correctly instead of the previous template `std::cout <<` that broke those. Added `micros()` / `yield()` and the common Arduino constants/macros (`HIGH`/`LOW`, `INPUT_PULLUP`, `PI`, `bit*`, `min`/`max`/`constrain`/`map`/`random`).
+- (JA) `.ino` がそのまま動くよう、`host-arduino-core` からハードウェア非依存の Arduino コア型を移植：`String`（`WString.h`）、`Print` / `Printable` / `Stream`、`pgmspace.h`（`F()` / `PSTR()`）。`Serial` を `Stream` 派生に変更し `stdout` 出力（入力は `stdin`）にしたので、これまでテンプレ `std::cout <<` で壊れていた `print(n, HEX)`、`println(値, 桁数)`、`String`、`Printable` が正しく出力される。`micros()` / `yield()` と一般的な Arduino 定数/マクロ（`HIGH`/`LOW`、`INPUT_PULLUP`、`PI`、`bit*`、`min`/`max`/`constrain`/`map`/`random`）を追加。
+- (EN) Fixed `digitalWrite()` / `digitalRead()` to share a single pin-state map; previously each used its own function-local `static` map, so a value written with `digitalWrite()` could not be read back with `digitalRead()`.
+- (JA) `digitalWrite()` / `digitalRead()` が単一のピン状態 map を共有するよう修正。以前は関数ローカルの `static` map をそれぞれ持っていたため、`digitalWrite()` で書いた値を `digitalRead()` で読み戻せなかった。
+- (EN) Moved the SDL2 (LovyanGFX / M5GFX) startup into the core `main.cpp` under `#ifdef NATIVE_USE_SDL2` (forward-declares `lgfx::v1::Panel_sdl::main`; real window, no `SDL_VIDEODRIVER=dummy`). The per-example `sdl_main.cpp` files are removed, so the SDL2 examples (`LovyanGFXBasic`, `M5UnifiedBasic`) run from the `.ino` alone. The core `main` stays `weak`, so a sketch can still provide its own.
+- (JA) SDL2（LovyanGFX / M5GFX）の起動処理をコアの `main.cpp` に `#ifdef NATIVE_USE_SDL2` で取り込み（`lgfx::v1::Panel_sdl::main` を前方宣言。`SDL_VIDEODRIVER=dummy` は設定せず実ウィンドウ表示）。各サンプルの `sdl_main.cpp` を削除したので、SDL2 サンプル（`LovyanGFXBasic`、`M5UnifiedBasic`）が `.ino` だけで動く。コアの `main` は `weak` のままなので、独自 `main` を持つスケッチも従来どおり優先される。
+- (EN) Added a minimal local test harness under `tests/` — a thin pytest that compiles a sketch with `arduino-cli` (default FQBN, `sdl2=disabled`, so no window opens) and asserts on `stdout`. Test sketches terminate with `exit(0)`. No `pytest-embedded` / TCP serial. Added a `Native tests` GitHub Actions workflow (`.github/workflows/tests.yml`) that runs the suite on Ubuntu for push / PR to `main`.
+- (JA) `tests/` 配下に最小のローカルテストを追加 — `arduino-cli` でスケッチをビルド（デフォルト FQBN、`sdl2=disabled` なので窓は開かない）し `stdout` を assert する薄い pytest。テストスケッチは `exit(0)` で終了。`pytest-embedded` / TCP シリアルは不使用。`main` への push / PR で Ubuntu 上でテストを実行する GitHub Actions ワークフロー（`.github/workflows/tests.yml`、`Native tests`）も追加。
+
+## 1.0.0
+- (EN) Initial Boards Manager release: minimal native Arduino core driving the host `gcc` / `g++` toolchain, with SDL2 examples for LovyanGFX / M5GFX / M5Unified.
+- (JA) ボードマネージャー初回リリース：ホストの `gcc` / `g++` ツールチェインで動く最小の native Arduino コア。LovyanGFX / M5GFX / M5Unified の SDL2 サンプル付き。

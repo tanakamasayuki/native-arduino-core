@@ -1,0 +1,47 @@
+name: Native tests
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      # g++ is preinstalled on ubuntu-latest. The runtime tests use the
+      # default FQBN (sdl2=disabled), so no SDL2 / display is required.
+
+      - name: Setup arduino-cli
+        uses: arduino/setup-arduino-cli@v2
+        with:
+          version: 1.4.0
+
+      - name: Initialize arduino-cli sketchbook
+        run: |
+          arduino-cli config init --overwrite
+          arduino-cli core update-index
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Install test dependencies
+        working-directory: tests
+        run: uv sync
+
+      # conftest.py registers this repo into the arduino-cli sketchbook
+      # (hardware/lang-ship/native) automatically, so no separate install
+      # step is needed.
+      - name: Run pytest
+        working-directory: tests
+        run: uv run pytest -v
