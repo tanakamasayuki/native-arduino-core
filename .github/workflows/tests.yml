@@ -9,7 +9,11 @@ on:
 
 jobs:
   pytest:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -17,10 +21,23 @@ jobs:
       # g++ is preinstalled on ubuntu-latest. The runtime tests use the
       # default FQBN (sdl2=disabled), so no SDL2 / display is required.
 
+      # Windows: platform.txt calls a bare `g++` from PATH. Provide it via
+      # MSYS2/UCRT64 (preinstalled at C:\msys64 on the runner). Adding
+      # ucrt64/bin to PATH also lets the produced .out find its runtime DLLs.
+      - name: Install g++ (Windows)
+        if: runner.os == 'Windows'
+        shell: bash
+        run: C:/msys64/usr/bin/pacman -S --noconfirm mingw-w64-ucrt-x86_64-gcc
+
+      - name: Add UCRT64 toolchain to PATH (Windows)
+        if: runner.os == 'Windows'
+        shell: bash
+        run: echo "C:/msys64/ucrt64/bin" >> "$GITHUB_PATH"
+
       - name: Setup arduino-cli
         uses: arduino/setup-arduino-cli@v2
         with:
-          version: 1.4.0
+          version: 1.5.0
 
       - name: Initialize arduino-cli sketchbook
         run: |

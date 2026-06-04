@@ -1,6 +1,8 @@
 # Changelog / 変更履歴
 
 ## Unreleased
+- (EN) Fixed a Windows compile failure (`open ...\sketch_merged.cpp: The system cannot find the file specified`) by adding a `recipe.preproc.macros` to `platform.txt`. Some arduino-cli versions feed the library-detection / function-prototype step a file named `<sketch>.ino.cpp.merged`; without `-x c++` g++ does not recognize the `.merged` extension, treats it as an unused linker input, and produces no output. The new recipe forces `-x c++ -E`, making preprocessing consistent across platforms and arduino-cli versions.
+- (JA) Windows でのコンパイル失敗（`open ...\sketch_merged.cpp: The system cannot find the file specified`）を `platform.txt` に `recipe.preproc.macros` を追加して修正。一部の arduino-cli はライブラリ検出/プロトタイプ生成段に `<sketch>.ino.cpp.merged` というファイルを渡すが、`-x c++` が無いと g++ が `.merged` 拡張子をソースと認識できず、未使用のリンカ入力として扱い何も出力しない。新レシピで `-x c++ -E` を強制し、プラットフォーム・arduino-cli バージョンに依らず前処理が動くようにした。
 
 ## 1.1.0
 - (EN) Ported the hardware-independent Arduino core types from `host-arduino-core` so plain `.ino` sketches work: `String` (`WString.h`), `Print` / `Printable` / `Stream`, and `pgmspace.h` (`F()` / `PSTR()`). `Serial` is now a `Stream` subclass writing to `stdout` (input from `stdin`), so `print(n, HEX)`, `println(value, digits)`, `String`, and `Printable` output correctly instead of the previous template `std::cout <<` that broke those. Added `micros()` / `yield()` and the common Arduino constants/macros (`HIGH`/`LOW`, `INPUT_PULLUP`, `PI`, `bit*`, `min`/`max`/`constrain`/`map`/`random`).
