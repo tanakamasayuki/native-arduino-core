@@ -1,4 +1,4 @@
-#include "ArduinoCompat.h"
+#include "Arduino.h"
 
 // instantiate global Serial
 SerialClass Serial;
