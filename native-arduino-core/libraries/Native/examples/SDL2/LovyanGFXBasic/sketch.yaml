@@ -3,7 +3,7 @@ profiles:
   generic:
     fqbn: lang-ship:native:generic:sdl2=enabled
     platforms:
-      - platform: lang-ship:native (1.1.0)
+      - platform: lang-ship:native (1.1.1)
         platform_index_url: https://tanakamasayuki.github.io/lang-ship-arduino-core/package_lang-ship_index.json
     libraries:
       - LovyanGFX (1.2.21)

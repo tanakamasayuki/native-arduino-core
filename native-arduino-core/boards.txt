@@ -31,6 +31,26 @@ generic.menu.m5gfx_board.board_M5Dial=board_M5Dial
 generic.menu.m5gfx_board.board_M5Dial.build.extra_flags_m5gfx_board=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5Dial
 generic.menu.m5gfx_board.board_M5Tab5=board_M5Tab5
 generic.menu.m5gfx_board.board_M5Tab5.build.extra_flags_m5gfx_board=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5Tab5
+generic.menu.m5gfx_board.board_M5Cardputer=board_M5Cardputer
+generic.menu.m5gfx_board.board_M5Cardputer.build.extra_flags_m5gfx_board=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5Cardputer
+generic.menu.m5gfx_board.board_M5AtomS3=board_M5AtomS3
+generic.menu.m5gfx_board.board_M5AtomS3.build.extra_flags_m5gfx_board=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5AtomS3
+generic.menu.m5gfx_board.board_M5StickC=board_M5StickC
+generic.menu.m5gfx_board.board_M5StickC.build.extra_flags_m5gfx_board=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5StickC
+generic.menu.m5gfx_board.board_M5Paper=board_M5Paper
+generic.menu.m5gfx_board.board_M5Paper.build.extra_flags_m5gfx_board=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5Paper
+generic.menu.m5gfx_board.board_M5DinMeter=board_M5DinMeter
+generic.menu.m5gfx_board.board_M5DinMeter.build.extra_flags_m5gfx_board=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5DinMeter
+generic.menu.m5gfx_board.board_M5AtomS3R=board_M5AtomS3R
+generic.menu.m5gfx_board.board_M5AtomS3R.build.extra_flags_m5gfx_board=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5AtomS3R
+generic.menu.m5gfx_board.board_M5StickS3=board_M5StickS3
+generic.menu.m5gfx_board.board_M5StickS3.build.extra_flags_m5gfx_board=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5StickS3
+generic.menu.m5gfx_board.board_M5StackCoreS3SE=board_M5StackCoreS3SE
+generic.menu.m5gfx_board.board_M5StackCoreS3SE.build.extra_flags_m5gfx_board=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5StackCoreS3SE
+generic.menu.m5gfx_board.board_M5StackChan=board_M5StackChan
+generic.menu.m5gfx_board.board_M5StackChan.build.extra_flags_m5gfx_board=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5StackChan
+generic.menu.m5gfx_board.board_M5VAMeter=board_M5VAMeter
+generic.menu.m5gfx_board.board_M5VAMeter.build.extra_flags_m5gfx_board=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5VAMeter
 generic.menu.m5gfx_scale=disabled
 generic.menu.m5gfx_scale.disabled=Disabled
 generic.menu.m5gfx_scale.disabled.build.extra_flags_m5gfx_scale=
@@ -434,3 +454,463 @@ SLD2_M5Tab5.menu.m5gfx_rotation.r7.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTA
 SLD2_M5Tab5.upload.tool.run=run
 SLD2_M5Tab5.upload.tool.default=run
 SLD2_M5Tab5.upload.protocol=run
+## Board: lang-ship:native:SLD2_M5Cardputer
+SLD2_M5Cardputer.name=Native (SLD2_M5Cardputer)
+SLD2_M5Cardputer.build.core=native
+SLD2_M5Cardputer.build.board=NATIVE_SLD2_M5CARDPUTER
+SLD2_M5Cardputer.menu.sdl2=enabled
+SLD2_M5Cardputer.menu.sdl2.enabled=Enabled
+SLD2_M5Cardputer.menu.sdl2.enabled.build.extra_flags_sdl2=-DNATIVE_USE_SDL2 -lSDL2
+SLD2_M5Cardputer.menu.m5gfx_board=board_M5Cardputer
+SLD2_M5Cardputer.menu.m5gfx_board.board_M5Cardputer=board_M5Cardputer
+SLD2_M5Cardputer.menu.m5gfx_board.board_M5Cardputer.build.extra_flags_m5gfx_board=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5Cardputer
+SLD2_M5Cardputer.menu.m5gfx_scale=disabled
+SLD2_M5Cardputer.menu.m5gfx_scale.disabled=Disabled
+SLD2_M5Cardputer.menu.m5gfx_scale.disabled.build.extra_flags_m5gfx_scale=
+SLD2_M5Cardputer.menu.m5gfx_scale.x1=x1
+SLD2_M5Cardputer.menu.m5gfx_scale.x1.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=1
+SLD2_M5Cardputer.menu.m5gfx_scale.x2=x2
+SLD2_M5Cardputer.menu.m5gfx_scale.x2.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=2
+SLD2_M5Cardputer.menu.m5gfx_scale.x3=x3
+SLD2_M5Cardputer.menu.m5gfx_scale.x3.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=3
+SLD2_M5Cardputer.menu.m5gfx_scale.x4=x4
+SLD2_M5Cardputer.menu.m5gfx_scale.x4.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=4
+SLD2_M5Cardputer.menu.m5gfx_scale.x8=x8
+SLD2_M5Cardputer.menu.m5gfx_scale.x8.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=8
+SLD2_M5Cardputer.menu.m5gfx_rotation=disabled
+SLD2_M5Cardputer.menu.m5gfx_rotation.disabled=Disabled
+SLD2_M5Cardputer.menu.m5gfx_rotation.disabled.build.extra_flags_m5gfx_rotation=
+SLD2_M5Cardputer.menu.m5gfx_rotation.r0=0
+SLD2_M5Cardputer.menu.m5gfx_rotation.r0.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=0
+SLD2_M5Cardputer.menu.m5gfx_rotation.r1=1
+SLD2_M5Cardputer.menu.m5gfx_rotation.r1.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=1
+SLD2_M5Cardputer.menu.m5gfx_rotation.r2=2
+SLD2_M5Cardputer.menu.m5gfx_rotation.r2.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=2
+SLD2_M5Cardputer.menu.m5gfx_rotation.r3=3
+SLD2_M5Cardputer.menu.m5gfx_rotation.r3.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=3
+SLD2_M5Cardputer.menu.m5gfx_rotation.r4=4
+SLD2_M5Cardputer.menu.m5gfx_rotation.r4.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=4
+SLD2_M5Cardputer.menu.m5gfx_rotation.r5=5
+SLD2_M5Cardputer.menu.m5gfx_rotation.r5.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=5
+SLD2_M5Cardputer.menu.m5gfx_rotation.r6=6
+SLD2_M5Cardputer.menu.m5gfx_rotation.r6.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=6
+SLD2_M5Cardputer.menu.m5gfx_rotation.r7=7
+SLD2_M5Cardputer.menu.m5gfx_rotation.r7.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=7
+SLD2_M5Cardputer.upload.tool.run=run
+SLD2_M5Cardputer.upload.tool.default=run
+SLD2_M5Cardputer.upload.protocol=run
+
+## Board: lang-ship:native:SLD2_M5AtomS3
+SLD2_M5AtomS3.name=Native (SLD2_M5AtomS3)
+SLD2_M5AtomS3.build.core=native
+SLD2_M5AtomS3.build.board=NATIVE_SLD2_M5ATOMS3
+SLD2_M5AtomS3.menu.sdl2=enabled
+SLD2_M5AtomS3.menu.sdl2.enabled=Enabled
+SLD2_M5AtomS3.menu.sdl2.enabled.build.extra_flags_sdl2=-DNATIVE_USE_SDL2 -lSDL2
+SLD2_M5AtomS3.menu.m5gfx_board=board_M5AtomS3
+SLD2_M5AtomS3.menu.m5gfx_board.board_M5AtomS3=board_M5AtomS3
+SLD2_M5AtomS3.menu.m5gfx_board.board_M5AtomS3.build.extra_flags_m5gfx_board=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5AtomS3
+SLD2_M5AtomS3.menu.m5gfx_scale=disabled
+SLD2_M5AtomS3.menu.m5gfx_scale.disabled=Disabled
+SLD2_M5AtomS3.menu.m5gfx_scale.disabled.build.extra_flags_m5gfx_scale=
+SLD2_M5AtomS3.menu.m5gfx_scale.x1=x1
+SLD2_M5AtomS3.menu.m5gfx_scale.x1.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=1
+SLD2_M5AtomS3.menu.m5gfx_scale.x2=x2
+SLD2_M5AtomS3.menu.m5gfx_scale.x2.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=2
+SLD2_M5AtomS3.menu.m5gfx_scale.x3=x3
+SLD2_M5AtomS3.menu.m5gfx_scale.x3.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=3
+SLD2_M5AtomS3.menu.m5gfx_scale.x4=x4
+SLD2_M5AtomS3.menu.m5gfx_scale.x4.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=4
+SLD2_M5AtomS3.menu.m5gfx_scale.x8=x8
+SLD2_M5AtomS3.menu.m5gfx_scale.x8.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=8
+SLD2_M5AtomS3.menu.m5gfx_rotation=disabled
+SLD2_M5AtomS3.menu.m5gfx_rotation.disabled=Disabled
+SLD2_M5AtomS3.menu.m5gfx_rotation.disabled.build.extra_flags_m5gfx_rotation=
+SLD2_M5AtomS3.menu.m5gfx_rotation.r0=0
+SLD2_M5AtomS3.menu.m5gfx_rotation.r0.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=0
+SLD2_M5AtomS3.menu.m5gfx_rotation.r1=1
+SLD2_M5AtomS3.menu.m5gfx_rotation.r1.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=1
+SLD2_M5AtomS3.menu.m5gfx_rotation.r2=2
+SLD2_M5AtomS3.menu.m5gfx_rotation.r2.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=2
+SLD2_M5AtomS3.menu.m5gfx_rotation.r3=3
+SLD2_M5AtomS3.menu.m5gfx_rotation.r3.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=3
+SLD2_M5AtomS3.menu.m5gfx_rotation.r4=4
+SLD2_M5AtomS3.menu.m5gfx_rotation.r4.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=4
+SLD2_M5AtomS3.menu.m5gfx_rotation.r5=5
+SLD2_M5AtomS3.menu.m5gfx_rotation.r5.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=5
+SLD2_M5AtomS3.menu.m5gfx_rotation.r6=6
+SLD2_M5AtomS3.menu.m5gfx_rotation.r6.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=6
+SLD2_M5AtomS3.menu.m5gfx_rotation.r7=7
+SLD2_M5AtomS3.menu.m5gfx_rotation.r7.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=7
+SLD2_M5AtomS3.upload.tool.run=run
+SLD2_M5AtomS3.upload.tool.default=run
+SLD2_M5AtomS3.upload.protocol=run
+
+## Board: lang-ship:native:SLD2_M5StickC
+SLD2_M5StickC.name=Native (SLD2_M5StickC)
+SLD2_M5StickC.build.core=native
+SLD2_M5StickC.build.board=NATIVE_SLD2_M5STICKC
+SLD2_M5StickC.menu.sdl2=enabled
+SLD2_M5StickC.menu.sdl2.enabled=Enabled
+SLD2_M5StickC.menu.sdl2.enabled.build.extra_flags_sdl2=-DNATIVE_USE_SDL2 -lSDL2
+SLD2_M5StickC.menu.m5gfx_board=board_M5StickC
+SLD2_M5StickC.menu.m5gfx_board.board_M5StickC=board_M5StickC
+SLD2_M5StickC.menu.m5gfx_board.board_M5StickC.build.extra_flags_m5gfx_board=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5StickC
+SLD2_M5StickC.menu.m5gfx_scale=disabled
+SLD2_M5StickC.menu.m5gfx_scale.disabled=Disabled
+SLD2_M5StickC.menu.m5gfx_scale.disabled.build.extra_flags_m5gfx_scale=
+SLD2_M5StickC.menu.m5gfx_scale.x1=x1
+SLD2_M5StickC.menu.m5gfx_scale.x1.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=1
+SLD2_M5StickC.menu.m5gfx_scale.x2=x2
+SLD2_M5StickC.menu.m5gfx_scale.x2.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=2
+SLD2_M5StickC.menu.m5gfx_scale.x3=x3
+SLD2_M5StickC.menu.m5gfx_scale.x3.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=3
+SLD2_M5StickC.menu.m5gfx_scale.x4=x4
+SLD2_M5StickC.menu.m5gfx_scale.x4.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=4
+SLD2_M5StickC.menu.m5gfx_scale.x8=x8
+SLD2_M5StickC.menu.m5gfx_scale.x8.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=8
+SLD2_M5StickC.menu.m5gfx_rotation=disabled
+SLD2_M5StickC.menu.m5gfx_rotation.disabled=Disabled
+SLD2_M5StickC.menu.m5gfx_rotation.disabled.build.extra_flags_m5gfx_rotation=
+SLD2_M5StickC.menu.m5gfx_rotation.r0=0
+SLD2_M5StickC.menu.m5gfx_rotation.r0.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=0
+SLD2_M5StickC.menu.m5gfx_rotation.r1=1
+SLD2_M5StickC.menu.m5gfx_rotation.r1.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=1
+SLD2_M5StickC.menu.m5gfx_rotation.r2=2
+SLD2_M5StickC.menu.m5gfx_rotation.r2.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=2
+SLD2_M5StickC.menu.m5gfx_rotation.r3=3
+SLD2_M5StickC.menu.m5gfx_rotation.r3.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=3
+SLD2_M5StickC.menu.m5gfx_rotation.r4=4
+SLD2_M5StickC.menu.m5gfx_rotation.r4.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=4
+SLD2_M5StickC.menu.m5gfx_rotation.r5=5
+SLD2_M5StickC.menu.m5gfx_rotation.r5.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=5
+SLD2_M5StickC.menu.m5gfx_rotation.r6=6
+SLD2_M5StickC.menu.m5gfx_rotation.r6.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=6
+SLD2_M5StickC.menu.m5gfx_rotation.r7=7
+SLD2_M5StickC.menu.m5gfx_rotation.r7.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=7
+SLD2_M5StickC.upload.tool.run=run
+SLD2_M5StickC.upload.tool.default=run
+SLD2_M5StickC.upload.protocol=run
+
+## Board: lang-ship:native:SLD2_M5Paper
+SLD2_M5Paper.name=Native (SLD2_M5Paper)
+SLD2_M5Paper.build.core=native
+SLD2_M5Paper.build.board=NATIVE_SLD2_M5PAPER
+SLD2_M5Paper.menu.sdl2=enabled
+SLD2_M5Paper.menu.sdl2.enabled=Enabled
+SLD2_M5Paper.menu.sdl2.enabled.build.extra_flags_sdl2=-DNATIVE_USE_SDL2 -lSDL2
+SLD2_M5Paper.menu.m5gfx_board=board_M5Paper
+SLD2_M5Paper.menu.m5gfx_board.board_M5Paper=board_M5Paper
+SLD2_M5Paper.menu.m5gfx_board.board_M5Paper.build.extra_flags_m5gfx_board=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5Paper
+SLD2_M5Paper.menu.m5gfx_scale=disabled
+SLD2_M5Paper.menu.m5gfx_scale.disabled=Disabled
+SLD2_M5Paper.menu.m5gfx_scale.disabled.build.extra_flags_m5gfx_scale=
+SLD2_M5Paper.menu.m5gfx_scale.x1=x1
+SLD2_M5Paper.menu.m5gfx_scale.x1.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=1
+SLD2_M5Paper.menu.m5gfx_scale.x2=x2
+SLD2_M5Paper.menu.m5gfx_scale.x2.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=2
+SLD2_M5Paper.menu.m5gfx_scale.x3=x3
+SLD2_M5Paper.menu.m5gfx_scale.x3.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=3
+SLD2_M5Paper.menu.m5gfx_scale.x4=x4
+SLD2_M5Paper.menu.m5gfx_scale.x4.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=4
+SLD2_M5Paper.menu.m5gfx_scale.x8=x8
+SLD2_M5Paper.menu.m5gfx_scale.x8.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=8
+SLD2_M5Paper.menu.m5gfx_rotation=disabled
+SLD2_M5Paper.menu.m5gfx_rotation.disabled=Disabled
+SLD2_M5Paper.menu.m5gfx_rotation.disabled.build.extra_flags_m5gfx_rotation=
+SLD2_M5Paper.menu.m5gfx_rotation.r0=0
+SLD2_M5Paper.menu.m5gfx_rotation.r0.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=0
+SLD2_M5Paper.menu.m5gfx_rotation.r1=1
+SLD2_M5Paper.menu.m5gfx_rotation.r1.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=1
+SLD2_M5Paper.menu.m5gfx_rotation.r2=2
+SLD2_M5Paper.menu.m5gfx_rotation.r2.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=2
+SLD2_M5Paper.menu.m5gfx_rotation.r3=3
+SLD2_M5Paper.menu.m5gfx_rotation.r3.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=3
+SLD2_M5Paper.menu.m5gfx_rotation.r4=4
+SLD2_M5Paper.menu.m5gfx_rotation.r4.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=4
+SLD2_M5Paper.menu.m5gfx_rotation.r5=5
+SLD2_M5Paper.menu.m5gfx_rotation.r5.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=5
+SLD2_M5Paper.menu.m5gfx_rotation.r6=6
+SLD2_M5Paper.menu.m5gfx_rotation.r6.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=6
+SLD2_M5Paper.menu.m5gfx_rotation.r7=7
+SLD2_M5Paper.menu.m5gfx_rotation.r7.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=7
+SLD2_M5Paper.upload.tool.run=run
+SLD2_M5Paper.upload.tool.default=run
+SLD2_M5Paper.upload.protocol=run
+
+## Board: lang-ship:native:SLD2_M5DinMeter
+SLD2_M5DinMeter.name=Native (SLD2_M5DinMeter)
+SLD2_M5DinMeter.build.core=native
+SLD2_M5DinMeter.build.board=NATIVE_SLD2_M5DINMETER
+SLD2_M5DinMeter.menu.sdl2=enabled
+SLD2_M5DinMeter.menu.sdl2.enabled=Enabled
+SLD2_M5DinMeter.menu.sdl2.enabled.build.extra_flags_sdl2=-DNATIVE_USE_SDL2 -lSDL2
+SLD2_M5DinMeter.menu.m5gfx_board=board_M5DinMeter
+SLD2_M5DinMeter.menu.m5gfx_board.board_M5DinMeter=board_M5DinMeter
+SLD2_M5DinMeter.menu.m5gfx_board.board_M5DinMeter.build.extra_flags_m5gfx_board=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5DinMeter
+SLD2_M5DinMeter.menu.m5gfx_scale=disabled
+SLD2_M5DinMeter.menu.m5gfx_scale.disabled=Disabled
+SLD2_M5DinMeter.menu.m5gfx_scale.disabled.build.extra_flags_m5gfx_scale=
+SLD2_M5DinMeter.menu.m5gfx_scale.x1=x1
+SLD2_M5DinMeter.menu.m5gfx_scale.x1.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=1
+SLD2_M5DinMeter.menu.m5gfx_scale.x2=x2
+SLD2_M5DinMeter.menu.m5gfx_scale.x2.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=2
+SLD2_M5DinMeter.menu.m5gfx_scale.x3=x3
+SLD2_M5DinMeter.menu.m5gfx_scale.x3.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=3
+SLD2_M5DinMeter.menu.m5gfx_scale.x4=x4
+SLD2_M5DinMeter.menu.m5gfx_scale.x4.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=4
+SLD2_M5DinMeter.menu.m5gfx_scale.x8=x8
+SLD2_M5DinMeter.menu.m5gfx_scale.x8.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=8
+SLD2_M5DinMeter.menu.m5gfx_rotation=disabled
+SLD2_M5DinMeter.menu.m5gfx_rotation.disabled=Disabled
+SLD2_M5DinMeter.menu.m5gfx_rotation.disabled.build.extra_flags_m5gfx_rotation=
+SLD2_M5DinMeter.menu.m5gfx_rotation.r0=0
+SLD2_M5DinMeter.menu.m5gfx_rotation.r0.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=0
+SLD2_M5DinMeter.menu.m5gfx_rotation.r1=1
+SLD2_M5DinMeter.menu.m5gfx_rotation.r1.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=1
+SLD2_M5DinMeter.menu.m5gfx_rotation.r2=2
+SLD2_M5DinMeter.menu.m5gfx_rotation.r2.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=2
+SLD2_M5DinMeter.menu.m5gfx_rotation.r3=3
+SLD2_M5DinMeter.menu.m5gfx_rotation.r3.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=3
+SLD2_M5DinMeter.menu.m5gfx_rotation.r4=4
+SLD2_M5DinMeter.menu.m5gfx_rotation.r4.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=4
+SLD2_M5DinMeter.menu.m5gfx_rotation.r5=5
+SLD2_M5DinMeter.menu.m5gfx_rotation.r5.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=5
+SLD2_M5DinMeter.menu.m5gfx_rotation.r6=6
+SLD2_M5DinMeter.menu.m5gfx_rotation.r6.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=6
+SLD2_M5DinMeter.menu.m5gfx_rotation.r7=7
+SLD2_M5DinMeter.menu.m5gfx_rotation.r7.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=7
+SLD2_M5DinMeter.upload.tool.run=run
+SLD2_M5DinMeter.upload.tool.default=run
+SLD2_M5DinMeter.upload.protocol=run
+
+## Board: lang-ship:native:SLD2_M5AtomS3R
+SLD2_M5AtomS3R.name=Native (SLD2_M5AtomS3R)
+SLD2_M5AtomS3R.build.core=native
+SLD2_M5AtomS3R.build.board=NATIVE_SLD2_M5ATOMS3R
+SLD2_M5AtomS3R.menu.sdl2=enabled
+SLD2_M5AtomS3R.menu.sdl2.enabled=Enabled
+SLD2_M5AtomS3R.menu.sdl2.enabled.build.extra_flags_sdl2=-DNATIVE_USE_SDL2 -lSDL2
+SLD2_M5AtomS3R.menu.m5gfx_board=board_M5AtomS3R
+SLD2_M5AtomS3R.menu.m5gfx_board.board_M5AtomS3R=board_M5AtomS3R
+SLD2_M5AtomS3R.menu.m5gfx_board.board_M5AtomS3R.build.extra_flags_m5gfx_board=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5AtomS3R
+SLD2_M5AtomS3R.menu.m5gfx_scale=disabled
+SLD2_M5AtomS3R.menu.m5gfx_scale.disabled=Disabled
+SLD2_M5AtomS3R.menu.m5gfx_scale.disabled.build.extra_flags_m5gfx_scale=
+SLD2_M5AtomS3R.menu.m5gfx_scale.x1=x1
+SLD2_M5AtomS3R.menu.m5gfx_scale.x1.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=1
+SLD2_M5AtomS3R.menu.m5gfx_scale.x2=x2
+SLD2_M5AtomS3R.menu.m5gfx_scale.x2.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=2
+SLD2_M5AtomS3R.menu.m5gfx_scale.x3=x3
+SLD2_M5AtomS3R.menu.m5gfx_scale.x3.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=3
+SLD2_M5AtomS3R.menu.m5gfx_scale.x4=x4
+SLD2_M5AtomS3R.menu.m5gfx_scale.x4.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=4
+SLD2_M5AtomS3R.menu.m5gfx_scale.x8=x8
+SLD2_M5AtomS3R.menu.m5gfx_scale.x8.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=8
+SLD2_M5AtomS3R.menu.m5gfx_rotation=disabled
+SLD2_M5AtomS3R.menu.m5gfx_rotation.disabled=Disabled
+SLD2_M5AtomS3R.menu.m5gfx_rotation.disabled.build.extra_flags_m5gfx_rotation=
+SLD2_M5AtomS3R.menu.m5gfx_rotation.r0=0
+SLD2_M5AtomS3R.menu.m5gfx_rotation.r0.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=0
+SLD2_M5AtomS3R.menu.m5gfx_rotation.r1=1
+SLD2_M5AtomS3R.menu.m5gfx_rotation.r1.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=1
+SLD2_M5AtomS3R.menu.m5gfx_rotation.r2=2
+SLD2_M5AtomS3R.menu.m5gfx_rotation.r2.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=2
+SLD2_M5AtomS3R.menu.m5gfx_rotation.r3=3
+SLD2_M5AtomS3R.menu.m5gfx_rotation.r3.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=3
+SLD2_M5AtomS3R.menu.m5gfx_rotation.r4=4
+SLD2_M5AtomS3R.menu.m5gfx_rotation.r4.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=4
+SLD2_M5AtomS3R.menu.m5gfx_rotation.r5=5
+SLD2_M5AtomS3R.menu.m5gfx_rotation.r5.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=5
+SLD2_M5AtomS3R.menu.m5gfx_rotation.r6=6
+SLD2_M5AtomS3R.menu.m5gfx_rotation.r6.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=6
+SLD2_M5AtomS3R.menu.m5gfx_rotation.r7=7
+SLD2_M5AtomS3R.menu.m5gfx_rotation.r7.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=7
+SLD2_M5AtomS3R.upload.tool.run=run
+SLD2_M5AtomS3R.upload.tool.default=run
+SLD2_M5AtomS3R.upload.protocol=run
+
+## Board: lang-ship:native:SLD2_M5StickS3
+SLD2_M5StickS3.name=Native (SLD2_M5StickS3)
+SLD2_M5StickS3.build.core=native
+SLD2_M5StickS3.build.board=NATIVE_SLD2_M5STICKS3
+SLD2_M5StickS3.menu.sdl2=enabled
+SLD2_M5StickS3.menu.sdl2.enabled=Enabled
+SLD2_M5StickS3.menu.sdl2.enabled.build.extra_flags_sdl2=-DNATIVE_USE_SDL2 -lSDL2
+SLD2_M5StickS3.menu.m5gfx_board=board_M5StickS3
+SLD2_M5StickS3.menu.m5gfx_board.board_M5StickS3=board_M5StickS3
+SLD2_M5StickS3.menu.m5gfx_board.board_M5StickS3.build.extra_flags_m5gfx_board=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5StickS3
+SLD2_M5StickS3.menu.m5gfx_scale=disabled
+SLD2_M5StickS3.menu.m5gfx_scale.disabled=Disabled
+SLD2_M5StickS3.menu.m5gfx_scale.disabled.build.extra_flags_m5gfx_scale=
+SLD2_M5StickS3.menu.m5gfx_scale.x1=x1
+SLD2_M5StickS3.menu.m5gfx_scale.x1.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=1
+SLD2_M5StickS3.menu.m5gfx_scale.x2=x2
+SLD2_M5StickS3.menu.m5gfx_scale.x2.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=2
+SLD2_M5StickS3.menu.m5gfx_scale.x3=x3
+SLD2_M5StickS3.menu.m5gfx_scale.x3.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=3
+SLD2_M5StickS3.menu.m5gfx_scale.x4=x4
+SLD2_M5StickS3.menu.m5gfx_scale.x4.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=4
+SLD2_M5StickS3.menu.m5gfx_scale.x8=x8
+SLD2_M5StickS3.menu.m5gfx_scale.x8.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=8
+SLD2_M5StickS3.menu.m5gfx_rotation=disabled
+SLD2_M5StickS3.menu.m5gfx_rotation.disabled=Disabled
+SLD2_M5StickS3.menu.m5gfx_rotation.disabled.build.extra_flags_m5gfx_rotation=
+SLD2_M5StickS3.menu.m5gfx_rotation.r0=0
+SLD2_M5StickS3.menu.m5gfx_rotation.r0.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=0
+SLD2_M5StickS3.menu.m5gfx_rotation.r1=1
+SLD2_M5StickS3.menu.m5gfx_rotation.r1.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=1
+SLD2_M5StickS3.menu.m5gfx_rotation.r2=2
+SLD2_M5StickS3.menu.m5gfx_rotation.r2.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=2
+SLD2_M5StickS3.menu.m5gfx_rotation.r3=3
+SLD2_M5StickS3.menu.m5gfx_rotation.r3.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=3
+SLD2_M5StickS3.menu.m5gfx_rotation.r4=4
+SLD2_M5StickS3.menu.m5gfx_rotation.r4.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=4
+SLD2_M5StickS3.menu.m5gfx_rotation.r5=5
+SLD2_M5StickS3.menu.m5gfx_rotation.r5.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=5
+SLD2_M5StickS3.menu.m5gfx_rotation.r6=6
+SLD2_M5StickS3.menu.m5gfx_rotation.r6.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=6
+SLD2_M5StickS3.menu.m5gfx_rotation.r7=7
+SLD2_M5StickS3.menu.m5gfx_rotation.r7.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=7
+SLD2_M5StickS3.upload.tool.run=run
+SLD2_M5StickS3.upload.tool.default=run
+SLD2_M5StickS3.upload.protocol=run
+
+## Board: lang-ship:native:SLD2_M5StackCoreS3SE
+SLD2_M5StackCoreS3SE.name=Native (SLD2_M5StackCoreS3SE)
+SLD2_M5StackCoreS3SE.build.core=native
+SLD2_M5StackCoreS3SE.build.board=NATIVE_SLD2_M5STACKCORES3SE
+SLD2_M5StackCoreS3SE.menu.sdl2=enabled
+SLD2_M5StackCoreS3SE.menu.sdl2.enabled=Enabled
+SLD2_M5StackCoreS3SE.menu.sdl2.enabled.build.extra_flags_sdl2=-DNATIVE_USE_SDL2 -lSDL2
+SLD2_M5StackCoreS3SE.menu.m5gfx_board=board_M5StackCoreS3SE
+SLD2_M5StackCoreS3SE.menu.m5gfx_board.board_M5StackCoreS3SE=board_M5StackCoreS3SE
+SLD2_M5StackCoreS3SE.menu.m5gfx_board.board_M5StackCoreS3SE.build.extra_flags_m5gfx_board=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5StackCoreS3SE
+SLD2_M5StackCoreS3SE.menu.m5gfx_scale=disabled
+SLD2_M5StackCoreS3SE.menu.m5gfx_scale.disabled=Disabled
+SLD2_M5StackCoreS3SE.menu.m5gfx_scale.disabled.build.extra_flags_m5gfx_scale=
+SLD2_M5StackCoreS3SE.menu.m5gfx_scale.x1=x1
+SLD2_M5StackCoreS3SE.menu.m5gfx_scale.x1.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=1
+SLD2_M5StackCoreS3SE.menu.m5gfx_scale.x2=x2
+SLD2_M5StackCoreS3SE.menu.m5gfx_scale.x2.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=2
+SLD2_M5StackCoreS3SE.menu.m5gfx_scale.x3=x3
+SLD2_M5StackCoreS3SE.menu.m5gfx_scale.x3.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=3
+SLD2_M5StackCoreS3SE.menu.m5gfx_scale.x4=x4
+SLD2_M5StackCoreS3SE.menu.m5gfx_scale.x4.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=4
+SLD2_M5StackCoreS3SE.menu.m5gfx_scale.x8=x8
+SLD2_M5StackCoreS3SE.menu.m5gfx_scale.x8.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=8
+SLD2_M5StackCoreS3SE.menu.m5gfx_rotation=disabled
+SLD2_M5StackCoreS3SE.menu.m5gfx_rotation.disabled=Disabled
+SLD2_M5StackCoreS3SE.menu.m5gfx_rotation.disabled.build.extra_flags_m5gfx_rotation=
+SLD2_M5StackCoreS3SE.menu.m5gfx_rotation.r0=0
+SLD2_M5StackCoreS3SE.menu.m5gfx_rotation.r0.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=0
+SLD2_M5StackCoreS3SE.menu.m5gfx_rotation.r1=1
+SLD2_M5StackCoreS3SE.menu.m5gfx_rotation.r1.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=1
+SLD2_M5StackCoreS3SE.menu.m5gfx_rotation.r2=2
+SLD2_M5StackCoreS3SE.menu.m5gfx_rotation.r2.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=2
+SLD2_M5StackCoreS3SE.menu.m5gfx_rotation.r3=3
+SLD2_M5StackCoreS3SE.menu.m5gfx_rotation.r3.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=3
+SLD2_M5StackCoreS3SE.menu.m5gfx_rotation.r4=4
+SLD2_M5StackCoreS3SE.menu.m5gfx_rotation.r4.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=4
+SLD2_M5StackCoreS3SE.menu.m5gfx_rotation.r5=5
+SLD2_M5StackCoreS3SE.menu.m5gfx_rotation.r5.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=5
+SLD2_M5StackCoreS3SE.menu.m5gfx_rotation.r6=6
+SLD2_M5StackCoreS3SE.menu.m5gfx_rotation.r6.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=6
+SLD2_M5StackCoreS3SE.menu.m5gfx_rotation.r7=7
+SLD2_M5StackCoreS3SE.menu.m5gfx_rotation.r7.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=7
+SLD2_M5StackCoreS3SE.upload.tool.run=run
+SLD2_M5StackCoreS3SE.upload.tool.default=run
+SLD2_M5StackCoreS3SE.upload.protocol=run
+
+## Board: lang-ship:native:SLD2_M5StackChan
+SLD2_M5StackChan.name=Native (SLD2_M5StackChan)
+SLD2_M5StackChan.build.core=native
+SLD2_M5StackChan.build.board=NATIVE_SLD2_M5STACKCHAN
+SLD2_M5StackChan.menu.sdl2=enabled
+SLD2_M5StackChan.menu.sdl2.enabled=Enabled
+SLD2_M5StackChan.menu.sdl2.enabled.build.extra_flags_sdl2=-DNATIVE_USE_SDL2 -lSDL2
+SLD2_M5StackChan.menu.m5gfx_board=board_M5StackChan
+SLD2_M5StackChan.menu.m5gfx_board.board_M5StackChan=board_M5StackChan
+SLD2_M5StackChan.menu.m5gfx_board.board_M5StackChan.build.extra_flags_m5gfx_board=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5StackChan
+SLD2_M5StackChan.menu.m5gfx_scale=disabled
+SLD2_M5StackChan.menu.m5gfx_scale.disabled=Disabled
+SLD2_M5StackChan.menu.m5gfx_scale.disabled.build.extra_flags_m5gfx_scale=
+SLD2_M5StackChan.menu.m5gfx_scale.x1=x1
+SLD2_M5StackChan.menu.m5gfx_scale.x1.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=1
+SLD2_M5StackChan.menu.m5gfx_scale.x2=x2
+SLD2_M5StackChan.menu.m5gfx_scale.x2.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=2
+SLD2_M5StackChan.menu.m5gfx_scale.x3=x3
+SLD2_M5StackChan.menu.m5gfx_scale.x3.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=3
+SLD2_M5StackChan.menu.m5gfx_scale.x4=x4
+SLD2_M5StackChan.menu.m5gfx_scale.x4.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=4
+SLD2_M5StackChan.menu.m5gfx_scale.x8=x8
+SLD2_M5StackChan.menu.m5gfx_scale.x8.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=8
+SLD2_M5StackChan.menu.m5gfx_rotation=disabled
+SLD2_M5StackChan.menu.m5gfx_rotation.disabled=Disabled
+SLD2_M5StackChan.menu.m5gfx_rotation.disabled.build.extra_flags_m5gfx_rotation=
+SLD2_M5StackChan.menu.m5gfx_rotation.r0=0
+SLD2_M5StackChan.menu.m5gfx_rotation.r0.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=0
+SLD2_M5StackChan.menu.m5gfx_rotation.r1=1
+SLD2_M5StackChan.menu.m5gfx_rotation.r1.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=1
+SLD2_M5StackChan.menu.m5gfx_rotation.r2=2
+SLD2_M5StackChan.menu.m5gfx_rotation.r2.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=2
+SLD2_M5StackChan.menu.m5gfx_rotation.r3=3
+SLD2_M5StackChan.menu.m5gfx_rotation.r3.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=3
+SLD2_M5StackChan.menu.m5gfx_rotation.r4=4
+SLD2_M5StackChan.menu.m5gfx_rotation.r4.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=4
+SLD2_M5StackChan.menu.m5gfx_rotation.r5=5
+SLD2_M5StackChan.menu.m5gfx_rotation.r5.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=5
+SLD2_M5StackChan.menu.m5gfx_rotation.r6=6
+SLD2_M5StackChan.menu.m5gfx_rotation.r6.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=6
+SLD2_M5StackChan.menu.m5gfx_rotation.r7=7
+SLD2_M5StackChan.menu.m5gfx_rotation.r7.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=7
+SLD2_M5StackChan.upload.tool.run=run
+SLD2_M5StackChan.upload.tool.default=run
+SLD2_M5StackChan.upload.protocol=run
+
+## Board: lang-ship:native:SLD2_M5VAMeter
+SLD2_M5VAMeter.name=Native (SLD2_M5VAMeter)
+SLD2_M5VAMeter.build.core=native
+SLD2_M5VAMeter.build.board=NATIVE_SLD2_M5VAMETER
+SLD2_M5VAMeter.menu.sdl2=enabled
+SLD2_M5VAMeter.menu.sdl2.enabled=Enabled
+SLD2_M5VAMeter.menu.sdl2.enabled.build.extra_flags_sdl2=-DNATIVE_USE_SDL2 -lSDL2
+SLD2_M5VAMeter.menu.m5gfx_board=board_M5VAMeter
+SLD2_M5VAMeter.menu.m5gfx_board.board_M5VAMeter=board_M5VAMeter
+SLD2_M5VAMeter.menu.m5gfx_board.board_M5VAMeter.build.extra_flags_m5gfx_board=-DM5GFX_SHOW_FRAME -DM5GFX_BACK_COLOR=0x222222u -DM5GFX_BOARD=board_M5VAMeter
+SLD2_M5VAMeter.menu.m5gfx_scale=disabled
+SLD2_M5VAMeter.menu.m5gfx_scale.disabled=Disabled
+SLD2_M5VAMeter.menu.m5gfx_scale.disabled.build.extra_flags_m5gfx_scale=
+SLD2_M5VAMeter.menu.m5gfx_scale.x1=x1
+SLD2_M5VAMeter.menu.m5gfx_scale.x1.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=1
+SLD2_M5VAMeter.menu.m5gfx_scale.x2=x2
+SLD2_M5VAMeter.menu.m5gfx_scale.x2.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=2
+SLD2_M5VAMeter.menu.m5gfx_scale.x3=x3
+SLD2_M5VAMeter.menu.m5gfx_scale.x3.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=3
+SLD2_M5VAMeter.menu.m5gfx_scale.x4=x4
+SLD2_M5VAMeter.menu.m5gfx_scale.x4.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=4
+SLD2_M5VAMeter.menu.m5gfx_scale.x8=x8
+SLD2_M5VAMeter.menu.m5gfx_scale.x8.build.extra_flags_m5gfx_scale=-DM5GFX_SCALE=8
+SLD2_M5VAMeter.menu.m5gfx_rotation=disabled
+SLD2_M5VAMeter.menu.m5gfx_rotation.disabled=Disabled
+SLD2_M5VAMeter.menu.m5gfx_rotation.disabled.build.extra_flags_m5gfx_rotation=
+SLD2_M5VAMeter.menu.m5gfx_rotation.r0=0
+SLD2_M5VAMeter.menu.m5gfx_rotation.r0.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=0
+SLD2_M5VAMeter.menu.m5gfx_rotation.r1=1
+SLD2_M5VAMeter.menu.m5gfx_rotation.r1.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=1
+SLD2_M5VAMeter.menu.m5gfx_rotation.r2=2
+SLD2_M5VAMeter.menu.m5gfx_rotation.r2.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=2
+SLD2_M5VAMeter.menu.m5gfx_rotation.r3=3
+SLD2_M5VAMeter.menu.m5gfx_rotation.r3.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=3
+SLD2_M5VAMeter.menu.m5gfx_rotation.r4=4
+SLD2_M5VAMeter.menu.m5gfx_rotation.r4.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=4
+SLD2_M5VAMeter.menu.m5gfx_rotation.r5=5
+SLD2_M5VAMeter.menu.m5gfx_rotation.r5.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=5
+SLD2_M5VAMeter.menu.m5gfx_rotation.r6=6
+SLD2_M5VAMeter.menu.m5gfx_rotation.r6.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=6
+SLD2_M5VAMeter.menu.m5gfx_rotation.r7=7
+SLD2_M5VAMeter.menu.m5gfx_rotation.r7.build.extra_flags_m5gfx_rotation=-DM5GFX_ROTATION=7
+SLD2_M5VAMeter.upload.tool.run=run
+SLD2_M5VAMeter.upload.tool.default=run
+SLD2_M5VAMeter.upload.protocol=run
+
