@@ -1,6 +1,8 @@
 # Changelog / 変更履歴
 
 ## Unreleased
+- (EN) Fixed a Windows link failure (`undefined reference to 'WinMain'`): the core's default `main()` was `weak`, and on Windows (mingw) a weak `main` inside the static `core.a` is not pulled in by the linker, so the CRT falls back to looking for the GUI `WinMain`. `main()` is now strong on Windows (`#ifdef _WIN32`), matching the SDL2 entrypoint; it stays `weak` elsewhere so sketches can still override it.
+- (JA) Windows のリンク失敗（`undefined reference to 'WinMain'`）を修正。コアの既定 `main()` が `weak` で、Windows(mingw) では静的アーカイブ `core.a` 内の weak `main` がリンカに取り込まれず、CRT が GUI 用 `WinMain` を探してしまうため。`main()` を Windows では強いシンボルにし（`#ifdef _WIN32`、SDL2 入口と同様）、それ以外では従来どおり `weak` のままスケッチが上書き可能にした。
 - (EN) Fixed a Windows compile failure (`open ...\sketch_merged.cpp: The system cannot find the file specified`) by adding a `recipe.preproc.macros` to `platform.txt`. Some arduino-cli versions feed the library-detection / function-prototype step a file named `<sketch>.ino.cpp.merged`; without `-x c++` g++ does not recognize the `.merged` extension, treats it as an unused linker input, and produces no output. The new recipe forces `-x c++ -E`, making preprocessing consistent across platforms and arduino-cli versions.
 - (JA) Windows でのコンパイル失敗（`open ...\sketch_merged.cpp: The system cannot find the file specified`）を `platform.txt` に `recipe.preproc.macros` を追加して修正。一部の arduino-cli はライブラリ検出/プロトタイプ生成段に `<sketch>.ino.cpp.merged` というファイルを渡すが、`-x c++` が無いと g++ が `.merged` 拡張子をソースと認識できず、未使用のリンカ入力として扱い何も出力しない。新レシピで `-x c++ -E` を強制し、プラットフォーム・arduino-cli バージョンに依らず前処理が動くようにした。
 
