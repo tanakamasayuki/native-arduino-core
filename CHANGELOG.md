@@ -1,6 +1,8 @@
 # Changelog / 変更履歴
 
 ## Unreleased
+
+## 1.1.2
 - (EN) Added SDL2 board entries for M5GFX targets whose SDL size handling already exists in M5GFX 0.2.22: M5Cardputer, M5AtomS3, M5StickC, M5Paper, M5DinMeter, M5AtomS3R, M5StickS3, M5StackCoreS3SE, M5StackChan, and M5VAMeter.
 - (JA) M5GFX 0.2.22 側で SDL サイズ設定が既にある対象について、SDL2 ボード定義を追加: M5Cardputer、M5AtomS3、M5StickC、M5Paper、M5DinMeter、M5AtomS3R、M5StickS3、M5StackCoreS3SE、M5StackChan、M5VAMeter。
 
