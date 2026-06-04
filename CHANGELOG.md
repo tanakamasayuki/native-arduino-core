@@ -1,6 +1,8 @@
 # Changelog / 変更履歴
 
 ## Unreleased
+
+## 1.1.0
 - (EN) Ported the hardware-independent Arduino core types from `host-arduino-core` so plain `.ino` sketches work: `String` (`WString.h`), `Print` / `Printable` / `Stream`, and `pgmspace.h` (`F()` / `PSTR()`). `Serial` is now a `Stream` subclass writing to `stdout` (input from `stdin`), so `print(n, HEX)`, `println(value, digits)`, `String`, and `Printable` output correctly instead of the previous template `std::cout <<` that broke those. Added `micros()` / `yield()` and the common Arduino constants/macros (`HIGH`/`LOW`, `INPUT_PULLUP`, `PI`, `bit*`, `min`/`max`/`constrain`/`map`/`random`).
 - (JA) `.ino` がそのまま動くよう、`host-arduino-core` からハードウェア非依存の Arduino コア型を移植：`String`（`WString.h`）、`Print` / `Printable` / `Stream`、`pgmspace.h`（`F()` / `PSTR()`）。`Serial` を `Stream` 派生に変更し `stdout` 出力（入力は `stdin`）にしたので、これまでテンプレ `std::cout <<` で壊れていた `print(n, HEX)`、`println(値, 桁数)`、`String`、`Printable` が正しく出力される。`micros()` / `yield()` と一般的な Arduino 定数/マクロ（`HIGH`/`LOW`、`INPUT_PULLUP`、`PI`、`bit*`、`min`/`max`/`constrain`/`map`/`random`）を追加。
 - (EN) Fixed `digitalWrite()` / `digitalRead()` to share a single pin-state map; previously each used its own function-local `static` map, so a value written with `digitalWrite()` could not be read back with `digitalRead()`.
