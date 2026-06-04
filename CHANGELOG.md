@@ -1,6 +1,8 @@
 # Changelog / 変更履歴
 
 ## Unreleased
+- (EN) Added SDL2 board entries for M5GFX targets whose SDL size handling already exists in M5GFX 0.2.22: M5Cardputer, M5AtomS3, M5StickC, M5Paper, M5DinMeter, M5AtomS3R, M5StickS3, M5StackCoreS3SE, M5StackChan, and M5VAMeter.
+- (JA) M5GFX 0.2.22 側で SDL サイズ設定が既にある対象について、SDL2 ボード定義を追加: M5Cardputer、M5AtomS3、M5StickC、M5Paper、M5DinMeter、M5AtomS3R、M5StickS3、M5StackCoreS3SE、M5StackChan、M5VAMeter。
 
 ## 1.1.1
 - (EN) Fixed a Windows link failure (`undefined reference to 'WinMain'`): the core's default `main()` was `weak`, and on Windows (mingw) a weak `main` inside the static `core.a` is not pulled in by the linker, so the CRT falls back to looking for the GUI `WinMain`. `main()` is now strong on Windows (`#ifdef _WIN32`), matching the SDL2 entrypoint; it stays `weak` elsewhere so sketches can still override it.
