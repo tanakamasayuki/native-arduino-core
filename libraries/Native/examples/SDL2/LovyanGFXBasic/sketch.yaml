@@ -4,7 +4,7 @@ profiles:
     fqbn: lang-ship:native:generic:sdl2=enabled
     platforms:
       - platform: lang-ship:native (1.0.0)
-        platform_index_url: https://tanakamasayuki.github.io/native-arduino-core/package_index.json
+        platform_index_url: https://tanakamasayuki.github.io/lang-ship-arduino-core/package_lang-ship_index.json
     libraries:
-      - LovyanGFX (1.2.7)
+      - LovyanGFX (1.2.21)
     port: NONE

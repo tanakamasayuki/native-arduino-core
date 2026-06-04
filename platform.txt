@@ -42,12 +42,12 @@ recipe.ar.pattern={compiler.path}{compiler.ar.cmd} {compiler.ar.flags} {compiler
 # We wrap the link in sh -c so we can run the produced .out immediately after linking.
 # Link (C) and then run the produced binary.
 # We wrap the link in sh -c so we can run the produced .out immediately after linking.
-recipe.c.link.pattern={compiler.path}{compiler.cpp.cmd} {compiler.ldflags} {archive_file_path} {object_files} {build.extra_flags} -o {build.path}/{build.project_name}.out
+recipe.c.link.pattern={compiler.path}{compiler.cpp.cmd} {compiler.ldflags} {object_files} {archive_file_path} {build.extra_flags} -o {build.path}/{build.project_name}.out
 # Ensure both C and C++ link recipes exist. Some CLI versions call the C++ link recipe
 # when linking C++ sketches, so provide an identical cpp variant.
 
 # Link (C++) and then run the produced binary.
-recipe.cpp.link.pattern={compiler.path}{compiler.cpp.cmd} {compiler.ldflags} {archive_file_path} {object_files} {build.extra_flags} -o {build.path}/{build.project_name}.out
+recipe.cpp.link.pattern={compiler.path}{compiler.cpp.cmd} {compiler.ldflags} {object_files} {archive_file_path} {build.extra_flags} -o {build.path}/{build.project_name}.out
 
 # ELF/linker (combine) settings
 # Some Arduino CLI/toolchains call a "combine" recipe to merge objects and archives

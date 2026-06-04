@@ -1,0 +1,13 @@
+[project]
+name = "native-arduino-core-tests"
+version = "0.1.0"
+requires-python = ">=3.10"
+# 最小構成: pytest のみ。host-arduino-core の pytest-embedded / TCP serial は
+# 持ち込まない。native はスケッチが stdout に出力し exit(0) で終了するので、
+# 「arduino-cli compile → 実行 → stdout を assert」だけでテストできる。
+dependencies = [
+    "pytest>=8",
+]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
