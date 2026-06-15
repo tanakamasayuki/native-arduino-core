@@ -3,6 +3,11 @@
 
 日本語 | English: [README.md](README.md)
 
+> [!WARNING]
+> **このボードマネージャは非推奨です。更新は停止しており、過去プロジェクトのために維持しているだけです。** 新機能の追加や仕様の変更は予定していません。
+>
+> 後継プロジェクトは **[host-arduino-core](https://github.com/tanakamasayuki/host-arduino-core)** です。現状でもこのボードマネージャより高機能になっています。新規プロジェクトでは host-arduino-core をご利用ください。既存プロジェクトも可能な範囲で移行をおすすめします。
+
 https://tanakamasayuki.github.io/lang-ship-arduino-core/package_lang-ship_index.json
 
 ホスト PC に入っている `gcc` / `g++` を Arduino IDE / Arduino CLI から直接呼び出し、ネイティブ実行ファイルとしてスケッチをビルドする最小構成の Arduino コア + Boards Manager パッケージです。`upload` はビルドしたバイナリをそのまま起動します。

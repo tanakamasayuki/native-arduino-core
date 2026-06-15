@@ -2,6 +2,11 @@
 
 English | 日本語: [README.ja.md](README.ja.md)
 
+> [!WARNING]
+> **This board manager is deprecated and no longer actively developed.** It is kept only for the sake of existing projects, and no new features or specification changes are planned.
+>
+> The successor project is **[host-arduino-core](https://github.com/tanakamasayuki/host-arduino-core)**, which is already more capable than this board manager. Please use host-arduino-core for new projects and migrate existing ones when you can.
+
 https://tanakamasayuki.github.io/lang-ship-arduino-core/package_lang-ship_index.json
 
 Minimal Arduino core + Boards Manager package that drives the host PC’s native `gcc` / `g++` toolchain. Sketches compile into regular executables and the “upload” recipe simply runs that executable on the host.
